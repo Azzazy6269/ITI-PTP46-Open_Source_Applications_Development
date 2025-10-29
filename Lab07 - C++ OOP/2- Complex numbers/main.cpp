@@ -1,0 +1,83 @@
+#include <iostream>
+
+using namespace std;
+
+
+class Complex
+{
+private:
+    int real;
+    int img;
+public:
+    Complex(int _real=0,int _img=0)
+    {
+        setReal(_real);
+        setImg(_img);
+    }
+
+    ~Complex(){}
+    int getReal()
+    {
+        return real;
+    }
+    int getImg()
+    {
+        return img;
+    }
+    void setReal(int _real)
+    {
+        real = _real;
+    }
+    void setImg(int _img)
+    {
+        img = _img;
+    }
+    void print()
+    {
+        if(img>0)
+        {
+            cout<<real<<"+"<<img<<"j"<<endl;
+        }
+        else
+        {
+            cout<<real<<img<<"j"<<endl;
+        }
+    }
+    void substract(Complex c)
+    {
+        real -= c.getReal();
+        img -= c.getImg();
+    }
+};
+Complex add(Complex c1,Complex c2)
+{
+    Complex c;
+    c.setReal(c1.getReal()+c2.getReal());
+    c.setImg(c1.getImg()+c2.getImg());
+    return c;
+}
+
+int main()
+{
+    Complex c1;
+    c1.setReal(20);
+    c1.setImg(-35);
+    c1.print();
+
+    Complex c2;
+    c2.setReal(10);
+    c2.setImg(5);
+    c2.print();
+
+    c1.substract(c2);
+    c1.print();
+
+    Complex c3 = add(c1,c2);
+    c3.print();
+
+    Complex* c4 = new Complex(12,25);
+    return 0;
+
+   // delete c3;
+    delete c4;
+}
