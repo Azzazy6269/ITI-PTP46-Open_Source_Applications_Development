@@ -1,0 +1,106 @@
+SELECT Dnum , Dname , Fname , SSN 
+from Departments join Employees
+on MGRSSN = SSN;
+
+
+SELECT Dname , Pname 
+from Departments join Project
+on Project.Dnum = Departments.Dnum;
+
+
+SELECT Fname , Lname , Dependent.*
+from Employees join Dependent
+on Employees.SSN = ESSN;
+
+
+SELECT d.Dependent_name ,  e.Fname as employee_name , d.Sex 
+from Dependent d join Employees e
+on e.SSN = d.ESSN
+where e.Sex = 'F' AND d.Sex = 'F'
+UNION
+SELECT d.Dependent_name ,  e.Fname as employee_name , d.Sex 
+from Dependent d join Employees e
+on e.SSN = d.ESSN
+where e.Sex = 'M' AND d.Sex = 'M';
+
+
+SELECT Pnumber , Pname , Plocation
+from Project
+where Plocation = 'Cairo' OR Plocation = 'Alex';
+
+
+SELECT * from Project
+where Pname like 'a%';
+
+
+SELECT Fname , Lname , SSN from Employees
+where Dno = 30 AND Salary BETWEEN 1000 AND 2000;
+
+
+SELECT Fname, Lname 
+from Employees
+join Works_for on ESSN = SSN
+Join Project on Pno = Pnumber
+where Dno = 10 
+AND Pname = 'Al Rawdah'
+AND Works_for.Hours >= 10; 
+
+
+SELECT e.Fname , e.Lname
+from Employees e join Employees s
+on e.Superssn = s.SSN 
+WHERE s.Fname ='Kamel' AND s.Lname = 'Mohamed';
+
+
+SELECT Pname , Fname , Hours from Project
+join Works_for on Pnumber = Pno
+join Employees on SSN = ESSN;
+
+
+SELECT Pname , Fname from Project
+join Works_for on Pnumber = Pno
+join Employees on SSN = ESSN
+ORDER BY Pname;
+ 
+SELECT Departments.*
+FROM Departments 
+JOIN Employees on DNum =Dno
+ORDER BY SSN ASC
+LIMIT 1;
+
+SELECT Dname , Max(Salary),Min(Salary),AVG(Salary)
+FROM Departments 
+JOIN Employees on DNum =Dno
+GROUP BY Dname;
+
+
+SELECT Employees.Lname
+FROM Employees
+JOIN Departments ON Employees.SSN = Departments.MGRSSN
+LEFT JOIN Dependent ON Employees.SSN = Dependent.ESSN
+WHERE Dependent.ESSN IS NULL;
+
+
+SELECT d.DNum, d.Dname, COUNT(e.SSN) AS NumEmployees
+FROM Departments d
+JOIN Employees e ON e.Dno = d.DNum
+GROUP BY d.DNum, d.Dname
+HAVING AVG(e.Salary) < (SELECT AVG(Salary) FROM Employees);
+
+
+SELECT Fname , Pname
+from Employees e 
+join works_for w on e.SSN = w.ESSN 
+join Project p on p.Pnumber = w.Pno
+order by e.Fname,e.Lname;
+
+
+SELECT p.Pnumber , d.Dname , m.Lname, m.Address , m.BDate
+FROM Project p
+JOIN Departments d ON p.Dnum = d.DNum
+JOIN Employees m ON d.MGRSSN = m.SSN
+WHERE p.City = 'Cairo';
+ 
+
+
+

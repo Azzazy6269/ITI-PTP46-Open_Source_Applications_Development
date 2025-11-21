@@ -1,0 +1,1287 @@
+{
+  "diagramType": 2,
+  "data": {
+    "nodes": [
+      {
+        "id": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+        "type": "Table",
+        "position": {
+          "x": 140.70019356793767,
+          "y": 277.7001935679377
+        },
+        "data": {
+          "label": "Departments",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "b63d2625-d29d-4af8-a80e-d7fd4c897853",
+              "name": "detptId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "1ea29885-04a1-4fa6-8316-73a15747f177",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_6cbbb1e5-20c8-4bf9-95c4-fde90f7a5b41",
+              "name": "fk_Professor",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "1b512d58-75eb-4c56-833f-6ff0b69685b3",
+                "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+                "columns": [
+                  {
+                    "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                    "name": "head",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 102
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "type": "Table",
+        "position": {
+          "x": 512,
+          "y": 286
+        },
+        "data": {
+          "label": "Professors",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "206c0833-0044-4104-9f46-9c4d62396e7b",
+              "name": "pId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "2b3b2923-30c0-4ba6-9e73-65d314cc2690",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_52debc5b-41e8-42a5-bcbe-a6dfef7ca798",
+              "name": "fk_Department",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "63e0dbd5-1203-4e3a-8266-d6b6e19bad73",
+                "sourceTableId": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+                "columns": [
+                  {
+                    "id": "fk_b63d2625-d29d-4af8-a80e-d7fd4c897853",
+                    "name": "detptId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 102
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "b700780f-2367-4414-9710-ee711d4414a9",
+        "type": "Table",
+        "position": {
+          "x": 541.1902816186468,
+          "y": 58.72069976606497
+        },
+        "data": {
+          "label": "QuestionsBank",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "524983f5-f48f-419a-b8dc-56fd04c48627",
+              "name": "qId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "c1d7d701-8259-481a-b699-d43603988b09",
+              "name": "questionText",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fddbb377-b3c2-4a14-bc13-c12f0e620f91",
+              "name": "answer",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "198d9957-6e13-432d-afb2-51002e428877",
+              "name": "grade",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_412d629c-0d64-4fc1-83e1-eca8f6fe5f8d",
+              "name": "fk_Professors",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "258c0c56-77b3-493f-b0af-1d34004d338e",
+                "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+                "columns": [
+                  {
+                    "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                    "name": "pId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 152
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "9d34969d-5df0-4461-9f1e-d82e581699aa",
+        "type": "Table",
+        "position": {
+          "x": 162.65723562814992,
+          "y": 95.66827282862158
+        },
+        "data": {
+          "label": "choises",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fda812cd-5e64-4b17-8a4e-5f1121eca85a",
+              "name": "choise",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_1a55b7c2-4e05-4b74-a44a-7e9bbe9ca507",
+              "name": "fk_QuestionsBank",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "a58cf84d-0351-4985-b114-2394f5888554",
+                "sourceTableId": "b700780f-2367-4414-9710-ee711d4414a9",
+                "columns": [
+                  {
+                    "id": "fk_524983f5-f48f-419a-b8dc-56fd04c48627",
+                    "name": "qId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+        "type": "Table",
+        "position": {
+          "x": 522.9198534091875,
+          "y": 443.2160657772713
+        },
+        "data": {
+          "label": "Exams",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fbab0e95-f91a-413a-a746-3805eac6b5c7",
+              "name": "examId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "0788ee15-3550-4624-8429-4de62041ed36",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "5364836f-cf55-410a-9e08-6c713ada0bdd",
+              "name": "startTime",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "b8202815-63a3-4a67-8b96-0c11864303cd",
+              "name": "endTime",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "6b1c05e8-8625-41df-8540-c1acbca00a90",
+              "name": "totalGrade",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_5a87eb28-4ac3-4eed-8bee-863346a074aa",
+              "name": "fk_Professors",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "444dd8e2-3429-46ec-bc5a-f2f5d0a12b3b",
+                "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+                "columns": [
+                  {
+                    "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                    "name": "pId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_7315ff0e-b609-4456-b6ca-ffb1022b843c",
+              "name": "fk_Courses",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "33a757d8-6d92-4b6a-851e-73e1f31ffccb",
+                "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+                "columns": [
+                  {
+                    "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                    "name": "courseId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 202
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f4b2ea4e-8a7f-4ddc-b1c1-30ef2b5243a8",
+        "type": "Table",
+        "position": {
+          "x": 910.7335810229026,
+          "y": 336.48884910704464
+        },
+        "data": {
+          "label": "ExamQuestions",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_38fe5e4c-ddfd-4e7f-8f56-a6f30d66c13c",
+              "name": "fk_QuestionsBank",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "7717edde-fed4-4c95-bc57-e1e0c876a16c",
+                "sourceTableId": "b700780f-2367-4414-9710-ee711d4414a9",
+                "columns": [
+                  {
+                    "id": "fk_524983f5-f48f-419a-b8dc-56fd04c48627",
+                    "name": "qId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_03b17fcc-1e7a-410d-9dee-79f38895b1ea",
+              "name": "fk_Exams",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "acb3d7d7-ed8e-4a5a-b1bd-347d707929fe",
+                "sourceTableId": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+                "columns": [
+                  {
+                    "id": "fk_fbab0e95-f91a-413a-a746-3805eac6b5c7",
+                    "name": "examId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+        "type": "Table",
+        "position": {
+          "x": 200.17770137091236,
+          "y": 759.0860277836262
+        },
+        "data": {
+          "label": "Courses",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fb5805cd-d445-4e2a-b435-079589c4265c",
+              "name": "courseId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "d3780368-8bea-4e75-9c89-2d60b87dbb6b",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_85fee663-4ff4-4624-8b06-0495be70f767",
+              "name": "fk_Departments",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "83181bbb-dfee-4f90-986a-00b82b57fee8",
+                "sourceTableId": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+                "columns": [
+                  {
+                    "id": "fk_b63d2625-d29d-4af8-a80e-d7fd4c897853",
+                    "name": "detptId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 102
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "05928fb5-6331-455d-96c5-deb070490711",
+        "type": "Table",
+        "position": {
+          "x": 198,
+          "y": 509
+        },
+        "data": {
+          "label": "Teaches",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "6c0ede36-bf9d-4ef3-bff1-8452862b096e",
+              "name": "degree",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "272247b9-678e-46b9-9a9e-7b765796645f",
+              "name": "level",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_1877878a-a4d4-4385-b05a-d0b45d0909ba",
+              "name": "fk_Professors",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "aca57d32-a656-4ca2-812e-3669ce9ec752",
+                "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+                "columns": [
+                  {
+                    "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                    "name": "pId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_0e636880-17af-4e84-9118-3ff7ce99a4b2",
+              "name": "fk_Courses",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "7adee588-fb09-4f74-9ea4-9bc1539f55e8",
+                "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+                "columns": [
+                  {
+                    "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                    "name": "courseId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 128
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "d5180869-346e-41e1-9bac-bf6c92f37046",
+        "type": "Table",
+        "position": {
+          "x": 1235.5192930777357,
+          "y": 425.8350439689143
+        },
+        "data": {
+          "label": "Students",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+              "name": "sId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "1f4f1e6c-7d8a-4299-b781-f085d851146c",
+              "name": "userName",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "d93ed36b-6263-4551-9222-06c3da850a23",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "6297ed2e-5c6b-46a1-a397-a0115e6767da",
+              "name": "password",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "60511b1f-9c8a-4395-aee9-ea8e0e4da50b",
+              "name": "faculty",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "386b9749-7502-4ea1-9135-2b12df8d0cd5",
+              "name": "degree",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "11179997-69cc-42e6-abf5-4fb22cf93bf5",
+              "name": "level",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 201
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f392cb0d-64c4-41b4-91fa-e58e23ffbda5",
+        "type": "Table",
+        "position": {
+          "x": 786.5912426399784,
+          "y": 741.2390051089118
+        },
+        "data": {
+          "label": "evaluateCourse",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "f6cba20a-4eac-464a-996e-2444d21600fd",
+              "name": "rating",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "a0f80a17-b8d0-4d43-985c-49408720f486",
+              "name": "comment",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_449f6f3e-7bc9-4035-93d8-62c30683335a",
+              "name": "fk_Students",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "63b92fe6-eb2e-4be5-85bc-f5b0d1db99c5",
+                "sourceTableId": "d5180869-346e-41e1-9bac-bf6c92f37046",
+                "columns": [
+                  {
+                    "id": "fk_28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+                    "name": "sId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_70a83040-1c75-4d62-9204-5acd73f025a2",
+              "name": "fk_Courses",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "3885c289-5db5-49b4-8510-8fc284d00f8f",
+                "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+                "columns": [
+                  {
+                    "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                    "name": "courseId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 127
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f3c559fb-98ea-4558-b5ff-ec0896e14164",
+        "type": "Table",
+        "position": {
+          "x": 860.850580703813,
+          "y": 504.31237902003886
+        },
+        "data": {
+          "label": "evaluateProfessor",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "5ca9fb74-84f9-4866-abe6-1f3584dbb8d2",
+              "name": "rating",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "b727c728-db94-45e6-a496-72b45fffcd99",
+              "name": "comment",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_aacd8f78-2f05-4f5c-bc32-8668a97b0d12",
+              "name": "fk_Professors",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "57fbe636-7779-469b-b9bd-cb3c83f10845",
+                "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+                "columns": [
+                  {
+                    "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                    "name": "pId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_a638d1b7-77f3-4fb3-9f13-1eb8a4670285",
+              "name": "fk_Students",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "ff1c0e1e-3e62-4ed4-a6a4-e9504d14c2a5",
+                "sourceTableId": "d5180869-346e-41e1-9bac-bf6c92f37046",
+                "columns": [
+                  {
+                    "id": "fk_28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+                    "name": "sId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_554beb0b-6733-4f5d-a92e-41117ee92ecf",
+              "name": "fk_Courses",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "69868451-8b83-4e86-ae80-248169bd9857",
+                "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+                "columns": [
+                  {
+                    "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                    "name": "courseId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 152
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "e1904d59-e4e4-4445-9e67-1d95538a4e9f",
+        "type": "Table",
+        "position": {
+          "x": 929.4883952517118,
+          "y": 82.84042771505756
+        },
+        "data": {
+          "label": "answers",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "708f7924-e21a-4b92-9f65-4f9d02bf202f",
+              "name": "answer",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false,
+              "isOptional": false
+            },
+            {
+              "id": "fk_72f3825b-0577-45b6-85d1-553340f83b0f",
+              "name": "fk_Students",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "79a38c3a-72fe-45ba-8a26-d463cc04184e",
+                "sourceTableId": "d5180869-346e-41e1-9bac-bf6c92f37046",
+                "columns": [
+                  {
+                    "id": "fk_28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+                    "name": "sId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_739680e7-b31a-4335-bb98-acb6bdfae264",
+              "name": "fk_Exams",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "0ca10f98-d8e3-4b54-b9d1-7c9046bedb33",
+                "sourceTableId": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+                "columns": [
+                  {
+                    "id": "fk_fbab0e95-f91a-413a-a746-3805eac6b5c7",
+                    "name": "examId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_16ed913c-ab73-427c-87b2-0f5c18d449a9",
+              "name": "fk_QuestionsBank",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "366287a2-8e06-4130-90bb-32a67f936bb7",
+                "sourceTableId": "b700780f-2367-4414-9710-ee711d4414a9",
+                "columns": [
+                  {
+                    "id": "fk_524983f5-f48f-419a-b8dc-56fd04c48627",
+                    "name": "qId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 127
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8->e72c72cc-c3c6-482f-b143-78720a3a713a_1b512d58-75eb-4c56-833f-6ff0b69685b3",
+        "type": "Relational",
+        "source": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "targetHandle": "foreign-key-handle-1b512d58-75eb-4c56-833f-6ff0b69685b3",
+        "target": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "1b512d58-75eb-4c56-833f-6ff0b69685b3",
+            "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+            "columns": [
+              {
+                "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                "name": "pId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "e72c72cc-c3c6-482f-b143-78720a3a713a->730e53f1-453b-4a67-9f9e-6ba1a00f75a8_63e0dbd5-1203-4e3a-8266-d6b6e19bad73",
+        "type": "Relational",
+        "source": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+        "targetHandle": "foreign-key-handle-63e0dbd5-1203-4e3a-8266-d6b6e19bad73",
+        "target": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "63e0dbd5-1203-4e3a-8266-d6b6e19bad73",
+            "sourceTableId": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+            "columns": [
+              {
+                "id": "fk_b63d2625-d29d-4af8-a80e-d7fd4c897853",
+                "name": "detptId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "b700780f-2367-4414-9710-ee711d4414a9->9d34969d-5df0-4461-9f1e-d82e581699aa_a58cf84d-0351-4985-b114-2394f5888554",
+        "type": "Relational",
+        "source": "b700780f-2367-4414-9710-ee711d4414a9",
+        "targetHandle": "foreign-key-handle-a58cf84d-0351-4985-b114-2394f5888554",
+        "target": "9d34969d-5df0-4461-9f1e-d82e581699aa",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "a58cf84d-0351-4985-b114-2394f5888554",
+            "sourceTableId": "b700780f-2367-4414-9710-ee711d4414a9",
+            "columns": [
+              {
+                "id": "fk_524983f5-f48f-419a-b8dc-56fd04c48627",
+                "name": "qId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8->a68a131b-98ba-4eab-9c68-20e60f7385ae_444dd8e2-3429-46ec-bc5a-f2f5d0a12b3b",
+        "type": "Relational",
+        "source": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "targetHandle": "foreign-key-handle-444dd8e2-3429-46ec-bc5a-f2f5d0a12b3b",
+        "target": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "444dd8e2-3429-46ec-bc5a-f2f5d0a12b3b",
+            "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+            "columns": [
+              {
+                "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                "name": "pId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "b700780f-2367-4414-9710-ee711d4414a9->f4b2ea4e-8a7f-4ddc-b1c1-30ef2b5243a8_7717edde-fed4-4c95-bc57-e1e0c876a16c",
+        "type": "Relational",
+        "source": "b700780f-2367-4414-9710-ee711d4414a9",
+        "targetHandle": "foreign-key-handle-7717edde-fed4-4c95-bc57-e1e0c876a16c",
+        "target": "f4b2ea4e-8a7f-4ddc-b1c1-30ef2b5243a8",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "7717edde-fed4-4c95-bc57-e1e0c876a16c",
+            "sourceTableId": "b700780f-2367-4414-9710-ee711d4414a9",
+            "columns": [
+              {
+                "id": "fk_524983f5-f48f-419a-b8dc-56fd04c48627",
+                "name": "qId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a68a131b-98ba-4eab-9c68-20e60f7385ae->f4b2ea4e-8a7f-4ddc-b1c1-30ef2b5243a8_acb3d7d7-ed8e-4a5a-b1bd-347d707929fe",
+        "type": "Relational",
+        "source": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+        "targetHandle": "foreign-key-handle-acb3d7d7-ed8e-4a5a-b1bd-347d707929fe",
+        "target": "f4b2ea4e-8a7f-4ddc-b1c1-30ef2b5243a8",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "acb3d7d7-ed8e-4a5a-b1bd-347d707929fe",
+            "sourceTableId": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+            "columns": [
+              {
+                "id": "fk_fbab0e95-f91a-413a-a746-3805eac6b5c7",
+                "name": "examId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "e72c72cc-c3c6-482f-b143-78720a3a713a->5701fc94-8d36-49be-bae0-ca5541efc9e9_83181bbb-dfee-4f90-986a-00b82b57fee8",
+        "type": "Relational",
+        "source": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+        "targetHandle": "foreign-key-handle-83181bbb-dfee-4f90-986a-00b82b57fee8",
+        "target": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "83181bbb-dfee-4f90-986a-00b82b57fee8",
+            "sourceTableId": "e72c72cc-c3c6-482f-b143-78720a3a713a",
+            "columns": [
+              {
+                "id": "fk_b63d2625-d29d-4af8-a80e-d7fd4c897853",
+                "name": "detptId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8->05928fb5-6331-455d-96c5-deb070490711_aca57d32-a656-4ca2-812e-3669ce9ec752",
+        "type": "Relational",
+        "source": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "targetHandle": "foreign-key-handle-aca57d32-a656-4ca2-812e-3669ce9ec752",
+        "target": "05928fb5-6331-455d-96c5-deb070490711",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "aca57d32-a656-4ca2-812e-3669ce9ec752",
+            "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+            "columns": [
+              {
+                "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                "name": "pId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "5701fc94-8d36-49be-bae0-ca5541efc9e9->05928fb5-6331-455d-96c5-deb070490711_7adee588-fb09-4f74-9ea4-9bc1539f55e8",
+        "type": "Relational",
+        "source": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+        "targetHandle": "foreign-key-handle-7adee588-fb09-4f74-9ea4-9bc1539f55e8",
+        "target": "05928fb5-6331-455d-96c5-deb070490711",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "7adee588-fb09-4f74-9ea4-9bc1539f55e8",
+            "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+            "columns": [
+              {
+                "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                "name": "courseId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "d5180869-346e-41e1-9bac-bf6c92f37046->f392cb0d-64c4-41b4-91fa-e58e23ffbda5_63b92fe6-eb2e-4be5-85bc-f5b0d1db99c5",
+        "type": "Relational",
+        "source": "d5180869-346e-41e1-9bac-bf6c92f37046",
+        "targetHandle": "foreign-key-handle-63b92fe6-eb2e-4be5-85bc-f5b0d1db99c5",
+        "target": "f392cb0d-64c4-41b4-91fa-e58e23ffbda5",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "63b92fe6-eb2e-4be5-85bc-f5b0d1db99c5",
+            "sourceTableId": "d5180869-346e-41e1-9bac-bf6c92f37046",
+            "columns": [
+              {
+                "id": "fk_28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+                "name": "sId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "5701fc94-8d36-49be-bae0-ca5541efc9e9->f392cb0d-64c4-41b4-91fa-e58e23ffbda5_3885c289-5db5-49b4-8510-8fc284d00f8f",
+        "type": "Relational",
+        "source": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+        "targetHandle": "foreign-key-handle-3885c289-5db5-49b4-8510-8fc284d00f8f",
+        "target": "f392cb0d-64c4-41b4-91fa-e58e23ffbda5",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "3885c289-5db5-49b4-8510-8fc284d00f8f",
+            "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+            "columns": [
+              {
+                "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                "name": "courseId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "5701fc94-8d36-49be-bae0-ca5541efc9e9->a68a131b-98ba-4eab-9c68-20e60f7385ae_33a757d8-6d92-4b6a-851e-73e1f31ffccb",
+        "type": "Relational",
+        "source": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+        "targetHandle": "foreign-key-handle-33a757d8-6d92-4b6a-851e-73e1f31ffccb",
+        "target": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "33a757d8-6d92-4b6a-851e-73e1f31ffccb",
+            "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+            "columns": [
+              {
+                "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                "name": "courseId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8->b700780f-2367-4414-9710-ee711d4414a9_258c0c56-77b3-493f-b0af-1d34004d338e",
+        "type": "Relational",
+        "source": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "targetHandle": "foreign-key-handle-258c0c56-77b3-493f-b0af-1d34004d338e",
+        "target": "b700780f-2367-4414-9710-ee711d4414a9",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "258c0c56-77b3-493f-b0af-1d34004d338e",
+            "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+            "columns": [
+              {
+                "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                "name": "pId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8->f3c559fb-98ea-4558-b5ff-ec0896e14164_57fbe636-7779-469b-b9bd-cb3c83f10845",
+        "type": "Relational",
+        "source": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+        "targetHandle": "foreign-key-handle-57fbe636-7779-469b-b9bd-cb3c83f10845",
+        "target": "f3c559fb-98ea-4558-b5ff-ec0896e14164",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "57fbe636-7779-469b-b9bd-cb3c83f10845",
+            "sourceTableId": "730e53f1-453b-4a67-9f9e-6ba1a00f75a8",
+            "columns": [
+              {
+                "id": "fk_206c0833-0044-4104-9f46-9c4d62396e7b",
+                "name": "pId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "d5180869-346e-41e1-9bac-bf6c92f37046->f3c559fb-98ea-4558-b5ff-ec0896e14164_ff1c0e1e-3e62-4ed4-a6a4-e9504d14c2a5",
+        "type": "Relational",
+        "source": "d5180869-346e-41e1-9bac-bf6c92f37046",
+        "targetHandle": "foreign-key-handle-ff1c0e1e-3e62-4ed4-a6a4-e9504d14c2a5",
+        "target": "f3c559fb-98ea-4558-b5ff-ec0896e14164",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "ff1c0e1e-3e62-4ed4-a6a4-e9504d14c2a5",
+            "sourceTableId": "d5180869-346e-41e1-9bac-bf6c92f37046",
+            "columns": [
+              {
+                "id": "fk_28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+                "name": "sId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "5701fc94-8d36-49be-bae0-ca5541efc9e9->f3c559fb-98ea-4558-b5ff-ec0896e14164_69868451-8b83-4e86-ae80-248169bd9857",
+        "type": "Relational",
+        "source": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+        "targetHandle": "foreign-key-handle-69868451-8b83-4e86-ae80-248169bd9857",
+        "target": "f3c559fb-98ea-4558-b5ff-ec0896e14164",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "69868451-8b83-4e86-ae80-248169bd9857",
+            "sourceTableId": "5701fc94-8d36-49be-bae0-ca5541efc9e9",
+            "columns": [
+              {
+                "id": "fk_fb5805cd-d445-4e2a-b435-079589c4265c",
+                "name": "courseId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "d5180869-346e-41e1-9bac-bf6c92f37046->e1904d59-e4e4-4445-9e67-1d95538a4e9f_79a38c3a-72fe-45ba-8a26-d463cc04184e",
+        "type": "Relational",
+        "source": "d5180869-346e-41e1-9bac-bf6c92f37046",
+        "targetHandle": "foreign-key-handle-79a38c3a-72fe-45ba-8a26-d463cc04184e",
+        "target": "e1904d59-e4e4-4445-9e67-1d95538a4e9f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "79a38c3a-72fe-45ba-8a26-d463cc04184e",
+            "sourceTableId": "d5180869-346e-41e1-9bac-bf6c92f37046",
+            "columns": [
+              {
+                "id": "fk_28d37e40-2bc9-4d79-bafd-487529f0f3f9",
+                "name": "sId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a68a131b-98ba-4eab-9c68-20e60f7385ae->e1904d59-e4e4-4445-9e67-1d95538a4e9f_0ca10f98-d8e3-4b54-b9d1-7c9046bedb33",
+        "type": "Relational",
+        "source": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+        "targetHandle": "foreign-key-handle-0ca10f98-d8e3-4b54-b9d1-7c9046bedb33",
+        "target": "e1904d59-e4e4-4445-9e67-1d95538a4e9f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "0ca10f98-d8e3-4b54-b9d1-7c9046bedb33",
+            "sourceTableId": "a68a131b-98ba-4eab-9c68-20e60f7385ae",
+            "columns": [
+              {
+                "id": "fk_fbab0e95-f91a-413a-a746-3805eac6b5c7",
+                "name": "examId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "b700780f-2367-4414-9710-ee711d4414a9->e1904d59-e4e4-4445-9e67-1d95538a4e9f_366287a2-8e06-4130-90bb-32a67f936bb7",
+        "type": "Relational",
+        "source": "b700780f-2367-4414-9710-ee711d4414a9",
+        "targetHandle": "foreign-key-handle-366287a2-8e06-4130-90bb-32a67f936bb7",
+        "target": "e1904d59-e4e4-4445-9e67-1d95538a4e9f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "366287a2-8e06-4130-90bb-32a67f936bb7",
+            "sourceTableId": "b700780f-2367-4414-9710-ee711d4414a9",
+            "columns": [
+              {
+                "id": "fk_524983f5-f48f-419a-b8dc-56fd04c48627",
+                "name": "qId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "viewport": {
+      "x": 44.591103539149344,
+      "y": 178.7038420149105,
+      "zoom": 0.5
+    }
+  },
+  "name": "tables",
+  "folder": {
+    "name": "porject1",
+    "folderType": 2,
+    "parentFolder": {
+      "depth": 0,
+      "id": 125084,
+      "name": "Diagrams",
+      "folderType": 1
+    },
+    "depth": 1,
+    "id": 140230
+  },
+  "id": 163620,
+  "updatedAtTimestamp": 1763236306
+}

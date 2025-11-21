@@ -1,0 +1,736 @@
+{
+  "diagramType": 2,
+  "data": {
+    "nodes": [
+      {
+        "id": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+        "type": "Table",
+        "position": {
+          "x": -123.20001220703125,
+          "y": 23.5999755859375
+        },
+        "data": {
+          "label": "airLine",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+              "name": "airId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "b61ce007-e443-4555-a884-344c4b1dba4a",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "9b434b41-33ef-4c88-8c6d-68082585c012",
+              "name": "address",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "c03d2dee-e174-448c-a9c8-6500d8f802d6",
+              "name": "nameContact",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 125
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "6c3122ce-52d4-4c0f-981a-2cb644468455",
+        "type": "Table",
+        "position": {
+          "x": 171.19989013671875,
+          "y": -264
+        },
+        "data": {
+          "label": "phones",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "5ed3b933-a6f0-4ce7-a132-02492adeb4f5",
+              "name": "phoneNum",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_d468b119-23d5-4287-a86f-03bb8d1e1066",
+              "name": "fk_airLine",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "8ef9dd0b-3273-48ca-8474-e83761a648be",
+                "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+                "columns": [
+                  {
+                    "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                    "name": "airId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 77
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "2494bda7-e6c1-4ec2-8e8a-d7c83e713c70",
+        "type": "Table",
+        "position": {
+          "x": -125.00003051757812,
+          "y": 237.6000366210937
+        },
+        "data": {
+          "label": "airCraft",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "7fdb33ef-e295-47b4-8441-df427f20f956",
+              "name": "airCraftId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "9ebebd5c-ad47-4b35-beb5-e8af8a3a9e57",
+              "name": "capacity",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "73cac10b-6502-4866-9bba-2605ad6484f5",
+              "name": "New Column",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "63b9380b-6797-4a3a-af8e-e12d0ba08a19",
+              "name": "model",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "5a63d443-728b-4cde-b65a-6c07441e78e8",
+              "name": "assistantPilot",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "efc2d413-6e1c-4ff2-be79-132245439e7b",
+              "name": "majorPilot",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "e10c7f3f-ef78-460e-ab15-0fc8cd7852b1",
+              "name": "hostess1",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "d0f131e1-bd61-40f7-ad5e-11e4a1ea394f",
+              "name": "hostess2",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "fk_5ac48c3c-952f-442d-82b9-483779c8409f",
+              "name": "fk_airLine",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "425470d9-980a-4b06-8785-4f099c3453c9",
+                "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+                "columns": [
+                  {
+                    "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                    "name": "airId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 250
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f8f05635-f8d7-473e-9a5a-41145afe472d",
+        "type": "Table",
+        "position": {
+          "x": 571.199951171875,
+          "y": 168.60009765625006
+        },
+        "data": {
+          "label": "route",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "c2f1cac4-e88a-47e3-b8b0-35a7c979bccd",
+              "name": "routeId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "b53a9776-4253-4090-aa48-29a8e2e1ebe2",
+              "name": "origin",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "0d31c558-12ae-43cd-9765-89e87f55eb28",
+              "name": "destination",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "16ff1706-b32b-4602-83a9-ab707a03b3e9",
+              "name": "distance",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "a617e5e7-9f43-41f8-8687-81a6b45b0d8f",
+              "name": "classification",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 150
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "64e55558-90a0-449a-ae7a-e7359c481162",
+        "type": "Table",
+        "position": {
+          "x": 270.199951171875,
+          "y": 273.1998901367187
+        },
+        "data": {
+          "label": "routeAssignment",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "68f24b17-9069-41ba-a1f2-0d69ad5785c4",
+              "name": "numberOfPassengers",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "8b608095-a0a0-47d8-bf34-8a3161cf5e45",
+              "name": "pricePerPassenger",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "b12433af-b9bb-4478-9b59-dd6f260314b3",
+              "name": "departurDateTime",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "0ba38990-4d04-4e08-9620-7c0d55c34547",
+              "name": "arrivalDateTime",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fc478ebb-d2df-4920-a418-f9ff50e5e963",
+              "name": "timeAirCraftSpent",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_44e328a9-4148-46fa-a871-fa0dc059755d",
+              "name": "fk_airCraft",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "50e9bfdc-989b-433e-9915-bd00983f99bc",
+                "sourceTableId": "2494bda7-e6c1-4ec2-8e8a-d7c83e713c70",
+                "columns": [
+                  {
+                    "id": "fk_7fdb33ef-e295-47b4-8441-df427f20f956",
+                    "name": "airCraftId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_cd90e9d6-4683-403f-bd4e-f27b986f69c9",
+              "name": "fk_route",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "1806bb6d-1bac-46d5-a163-f795f8ed7f78",
+                "sourceTableId": "f8f05635-f8d7-473e-9a5a-41145afe472d",
+                "columns": [
+                  {
+                    "id": "fk_c2f1cac4-e88a-47e3-b8b0-35a7c979bccd",
+                    "name": "routeId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 200
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "9c1010c6-7614-4ec0-8499-d6b5140b38cd",
+        "type": "Table",
+        "position": {
+          "x": 472.2000732421875,
+          "y": -257.9999084472656
+        },
+        "data": {
+          "label": "employee",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "4d3072b8-1058-4777-aad0-7a911a784b14",
+              "name": "empId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "145136a5-016e-4a56-9c47-a71a0ac322a6",
+              "name": "name",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "ed2e0eef-38a7-45c2-ac84-e9c86e9b3dbd",
+              "name": "address",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "cbd50896-f3ce-42f4-8e7b-20e3b8a2fbbd",
+              "name": "day",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "73a6817b-b4f5-4cf7-be98-25d941098112",
+              "name": "New Column",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "b833b619-4fe2-498a-bc64-82887db77688",
+              "name": "month",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "bd5750f8-b940-43d6-afc5-6269005130bf",
+              "name": "year",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "dea8dfa1-4c4d-4619-b063-e6a74c1bb192",
+              "name": "gender",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "e15ea7fa-6220-4123-bc2d-d92cbc68d9c8",
+              "name": "position",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_b8dd1d72-ff4e-4a6e-b8dc-ae8be0fab821",
+              "name": "fk_airLine",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "b1b47c46-624b-453f-9ad3-5c6d0408e47e",
+                "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+                "columns": [
+                  {
+                    "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                    "name": "airId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 274
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "0fafc03e-6c87-44a1-a707-cd9fbe510762",
+        "type": "Table",
+        "position": {
+          "x": 840.2001953125,
+          "y": -77.20001220703125
+        },
+        "data": {
+          "label": "qualifications",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "bb280884-c90a-49da-8a92-4e92b4706d46",
+              "name": "qualificationName",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_c4358ba1-3aa1-41a2-9b9f-fc70e26276d7",
+              "name": "fk_employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "370b91d5-1323-47a4-bab3-a6465439e00c",
+                "sourceTableId": "9c1010c6-7614-4ec0-8499-d6b5140b38cd",
+                "columns": [
+                  {
+                    "id": "fk_4d3072b8-1058-4777-aad0-7a911a784b14",
+                    "name": "empId",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 77
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "184ccf1b-9664-43cf-aa5b-0852b4232757",
+        "type": "Table",
+        "position": {
+          "x": -261,
+          "y": -177
+        },
+        "data": {
+          "label": "transaction",
+          "isConnectable": true,
+          "columns": [
+            {
+              "id": "2e60189c-ad7d-43b5-894c-31afcde8a04a",
+              "name": "tranactionId",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "4fe5e86c-af4f-40b0-8d50-12e395a4948e",
+              "name": "description",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "3fcfb53a-a00f-4cd4-8f3d-27e5bebfbdf6",
+              "name": "ammount",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_ea479154-8b2b-4885-bcc3-7077e1504b61",
+              "name": "fk_airLine",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "551e9602-3aa1-4a32-bf87-d9db21c378e8",
+                "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+                "columns": [
+                  {
+                    "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                    "name": "airId",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": true,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e420e83e-6f70-4174-a836-b991d6d4b72c->6c3122ce-52d4-4c0f-981a-2cb644468455_8ef9dd0b-3273-48ca-8474-e83761a648be",
+        "type": "Relational",
+        "source": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+        "targetHandle": "foreign-key-handle-8ef9dd0b-3273-48ca-8474-e83761a648be",
+        "target": "6c3122ce-52d4-4c0f-981a-2cb644468455",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "8ef9dd0b-3273-48ca-8474-e83761a648be",
+            "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+            "columns": [
+              {
+                "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                "name": "airId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "e420e83e-6f70-4174-a836-b991d6d4b72c->2494bda7-e6c1-4ec2-8e8a-d7c83e713c70_425470d9-980a-4b06-8785-4f099c3453c9",
+        "type": "Relational",
+        "source": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+        "targetHandle": "foreign-key-handle-425470d9-980a-4b06-8785-4f099c3453c9",
+        "target": "2494bda7-e6c1-4ec2-8e8a-d7c83e713c70",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "425470d9-980a-4b06-8785-4f099c3453c9",
+            "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+            "columns": [
+              {
+                "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                "name": "airId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "2494bda7-e6c1-4ec2-8e8a-d7c83e713c70->64e55558-90a0-449a-ae7a-e7359c481162_50e9bfdc-989b-433e-9915-bd00983f99bc",
+        "type": "Relational",
+        "source": "2494bda7-e6c1-4ec2-8e8a-d7c83e713c70",
+        "targetHandle": "foreign-key-handle-50e9bfdc-989b-433e-9915-bd00983f99bc",
+        "target": "64e55558-90a0-449a-ae7a-e7359c481162",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "50e9bfdc-989b-433e-9915-bd00983f99bc",
+            "sourceTableId": "2494bda7-e6c1-4ec2-8e8a-d7c83e713c70",
+            "columns": [
+              {
+                "id": "fk_7fdb33ef-e295-47b4-8441-df427f20f956",
+                "name": "airCraftId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "f8f05635-f8d7-473e-9a5a-41145afe472d->64e55558-90a0-449a-ae7a-e7359c481162_1806bb6d-1bac-46d5-a163-f795f8ed7f78",
+        "type": "Relational",
+        "source": "f8f05635-f8d7-473e-9a5a-41145afe472d",
+        "targetHandle": "foreign-key-handle-1806bb6d-1bac-46d5-a163-f795f8ed7f78",
+        "target": "64e55558-90a0-449a-ae7a-e7359c481162",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "1806bb6d-1bac-46d5-a163-f795f8ed7f78",
+            "sourceTableId": "f8f05635-f8d7-473e-9a5a-41145afe472d",
+            "columns": [
+              {
+                "id": "fk_c2f1cac4-e88a-47e3-b8b0-35a7c979bccd",
+                "name": "routeId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "9c1010c6-7614-4ec0-8499-d6b5140b38cd->0fafc03e-6c87-44a1-a707-cd9fbe510762_370b91d5-1323-47a4-bab3-a6465439e00c",
+        "type": "Relational",
+        "source": "9c1010c6-7614-4ec0-8499-d6b5140b38cd",
+        "targetHandle": "foreign-key-handle-370b91d5-1323-47a4-bab3-a6465439e00c",
+        "target": "0fafc03e-6c87-44a1-a707-cd9fbe510762",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "370b91d5-1323-47a4-bab3-a6465439e00c",
+            "sourceTableId": "9c1010c6-7614-4ec0-8499-d6b5140b38cd",
+            "columns": [
+              {
+                "id": "fk_4d3072b8-1058-4777-aad0-7a911a784b14",
+                "name": "empId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "e420e83e-6f70-4174-a836-b991d6d4b72c->9c1010c6-7614-4ec0-8499-d6b5140b38cd_b1b47c46-624b-453f-9ad3-5c6d0408e47e",
+        "type": "Relational",
+        "source": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+        "targetHandle": "foreign-key-handle-b1b47c46-624b-453f-9ad3-5c6d0408e47e",
+        "target": "9c1010c6-7614-4ec0-8499-d6b5140b38cd",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "b1b47c46-624b-453f-9ad3-5c6d0408e47e",
+            "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+            "columns": [
+              {
+                "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                "name": "airId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "e420e83e-6f70-4174-a836-b991d6d4b72c->184ccf1b-9664-43cf-aa5b-0852b4232757_551e9602-3aa1-4a32-bf87-d9db21c378e8",
+        "type": "Relational",
+        "source": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+        "targetHandle": "foreign-key-handle-551e9602-3aa1-4a32-bf87-d9db21c378e8",
+        "target": "184ccf1b-9664-43cf-aa5b-0852b4232757",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "551e9602-3aa1-4a32-bf87-d9db21c378e8",
+            "sourceTableId": "e420e83e-6f70-4174-a836-b991d6d4b72c",
+            "columns": [
+              {
+                "id": "fk_d0d16ed3-93d0-4f6c-b3ff-1fdf76a81141",
+                "name": "airId",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "viewport": {
+      "x": 180.13203897411955,
+      "y": 254.61471807729367,
+      "zoom": 0.5
+    }
+  },
+  "name": "mappint5",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 125084
+  },
+  "id": 146479,
+  "updatedAtTimestamp": 1762345818
+}

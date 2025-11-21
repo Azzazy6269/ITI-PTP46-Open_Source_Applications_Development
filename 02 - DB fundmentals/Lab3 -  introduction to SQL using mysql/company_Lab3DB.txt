@@ -1,0 +1,175 @@
+SET FOREIGN_KEY_CHECKS = 0;
+Drop table if exists Employees;
+drop table if exists Departments;
+drop table if exists Works_for;
+drop table if exists Project;
+drop table if exists Dependent;
+SET FOREIGN_KEY_CHECKS = 1;
+
+create table Employees(
+Fname varchar(25) Not Null,
+Lname varchar(25) Not null,
+SSN int primary key,
+BDATE DateTime,
+Address Text,
+Sex char(1),
+Salary int Default 15000,
+Superssn int,
+Dno int
+);
+
+Alter table Employees
+Add constraint fk_Superssn foreign key(Superssn)
+references Employees(SSN)
+on delete set Null
+on update cascade; 
+
+create table Departments(
+Dname varchar(50),
+DNum int primary key,
+MGRSSN int,
+MGRStartDate Date
+);   
+
+Alter table Departments
+Add constraint fk_MGRSSN foreign key(MGRSSN)
+references Employees(SSN)
+on delete set Null
+on update cascade;
+
+Alter table Departments
+Modify Dname varchar(50) Not Null;
+
+Alter table Employees
+Add constraint fk_Dno foreign key(Dno)
+references Departments(DNum)
+on delete set Null
+on update cascade;
+
+create table Works_for(
+ESSN int,
+Pno int,
+Hours int,
+foreign key (ESSN) references Employees(SSN) on delete set Null on update cascade
+);
+
+create table Project(
+Pname varchar(50) Not Null,
+Pnumber int primary key,
+Plocation text,
+City varchar(25),
+Dnum int,
+foreign key (Dnum) references Departments(DNum) on delete set null on update cascade
+);
+
+Alter table Works_for
+Add constraint fk_Pno foreign key(Pno)
+references Project(Pnumber) 
+on delete set Null
+on update cascade;
+
+create table Dependent(
+ESSN int,
+Dependent_name varchar(50),
+Sex char(1),
+Bdate Date,
+foreign key (ESSN) references Employees(SSN) on delete cascade on update cascade
+);
+
+show tables;
+describe Employees;
+describe Departments;
+describe Works_for;
+describe Project;
+
+
+INSERT INTO Departments (Dname, DNum, MGRSSN, MGRStartDate) VALUES
+('DP1', 10, null, '2005-01-01'),
+('DP2', 20, null, '2006-03-01'),
+('DP3', 30, null, '2006-06-01');
+
+INSERT INTO Employees (Fname, Lname, SSN, BDATE, Address, Sex, Salary, Superssn, Dno) VALUES
+('Amr', 'Omran', 321654, '1963-09-14', '44 Hilopolis.Cairo', 'M', 2500, NULL, NULL),
+('Kamel', 'Mohamed', 223344, '1970-10-15', '38 Mohy el dien abo el Ezz St.Cairo', 'M', 1800, 321654, 10),
+('Ahmed', 'Ali', 112233, '1965-01-01', '15 Ali fahmy St.Giza', 'M', 1300, 223344, 10),
+('Hanaa', 'Sobhy', 123456, '1973-03-18', '38 Abdel Khalik Tharwat St. Downtown.Cairo', 'F', 800, 223344, 10),
+('Noha', 'Mohamed', 968574, '1975-02-01', '55 Orabi St. El Mohandiseen .Cairo', 'F', 1600, 321654, 20),
+('Edward', 'Hanna', 512463, '1972-08-19', '18 Abaas El 3akaad St. Nasr City.Cairo', 'M', 1500, 321654, 30),
+('Mariam', 'Adel', 669955, '1982-06-12', '269 El-Haram st. Giza', 'F', 750, 512463, 20),
+('Maged', 'Raoof', 521634, '1980-04-06', '18 Kholosi st.Shobra.Cairo', 'M', 1000, 968574, 30);
+
+update Departments
+set MGRSSN = 223344 where DNum = 10;
+
+update Departments
+set MGRSSN = 968574 where DNum = 20;
+
+update Departments
+set MGRSSN = 512463 where DNum = 30;
+
+INSERT INTO Project (Pname, Pnumber, Plocation, City, Dnum) VALUES
+('AL Solimaniah', 100, 'Cairo_Alex Road', 'Alex', 10),
+('Al Rabwah', 200, '6th of October City', 'Giza', 10),
+('Al Rawdah', 300, 'Zaied City', 'Giza', 10),
+('Al Rowad', 400, 'Cairo_Faiyom Road', 'Giza', 20),
+('Al Rehab', 500, 'Nasr City', 'Cairo', 30),
+('Pitcho american', 600, 'Maady', 'Cairo', 30),
+('Ebad El Rahman', 700, 'Ring Road', 'Cairo', 20);
+
+
+INSERT INTO Works_for (ESSN, Pno, Hours) VALUES
+(223344, 100, 10),
+(223344, 200, 10),
+(223344, 300, 10),
+(112233, 100, 40),
+(968574, 400, 15),
+(968574, 700, 15),
+(968574, 300, 10),
+(669955, 400, 20),
+(223344, 500, 10),
+(669955, 700, 7),
+(669955, 300, 10),
+(512463, 500, 10),
+(512463, 600, 25),
+(521634, 500, 10),
+(521634, 600, 20),
+(521634, 300, 6),
+(521634, 400, 4);
+
+
+INSERT INTO Dependent (ESSN, Dependent_name, Sex, Bdate) VALUES
+(112233, 'Hala Saied Ali', 'F', '1970-10-18'),
+(223344, 'Ahmed Kamel Shawki', 'M', '1998-03-27'),
+(223344, 'Mona Adel Mohamed', 'F', '1975-04-25'),
+(321654, 'Ramy Amr Omran', 'M', '1990-01-26'),
+(321654, 'Omar Amr Omran', 'M', '1993-03-30'),
+(321654, 'Sanaa Gawish', 'F', '1973-05-16'),
+(512463, 'Sara Edward', 'F', '2001-09-15'),
+(512463, 'Nora Ghaly', 'F', '1976-06-22');
+
+
+insert into Employees values
+("Mohammed","Ibrahim",102672,null,"zagazig",'M',70000,112233,30);
+insert into Employees(Fname,Lname,SSN,Dno)values("Kareem","Essam",102660,30);
+insert into Departments values("DEPT IT",100,112233,"2006-11-01");
+update Departments
+set MGRSSN = 968574 where DNum = 100;
+update Departments
+set MGRSSN = 102672 where DNum = 20;
+update Employees
+set Superssn = 102672 where SSN = 102660;
+update Departments 
+set MGRSSN = 102660 where DNum = 10;
+delete from Employees where SSN = 223344;
+update Employees
+set Salary = 94000 where SSN = 102672;
+
+Select * from Employees;
+Select Fname,Lname,Salary,Dno from Employees;
+Select Pname,Plocation,Dnum from Project;
+Select Fname,Lname,Salary*12*.1 as commision from Employees;
+Select Fname,Lname,SSN from Employees where Salary > 1000;
+Select Fname,Lname,SSN from Employees where Salary > 10000;
+Select Fname,Lname,Salary from Employees where Sex ='F';
+Select Dname,DNum from Departments where MGRSSN = 968574;
+Select Pnumber,Pname,Plocation from Project where Dnum =10;
