@@ -75,7 +75,7 @@ app.patch('/post/:id', async (req, res) => {
     res.json({ message: "post updated successfully", data: updatedPost });
 })
 
-//delete user by id
+//delete post by id
 app.delete('/post/:id',async (req,res)=>{
     const {id} = req.params;
     if(!mongoose.isValidObjectId(id)) {
