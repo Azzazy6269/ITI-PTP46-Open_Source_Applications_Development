@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      body{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 5px 5px 20px #888888;
+        background-color: rgb(247, 247, 237) !important;
+        border-radius: 10px;
+        width :90vw
+      }
+
+      section {
+        width: 80vw;
+        min-height: 120px;
+        height: auto;
+        background-color: beige !important;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: 5px 5px 20px #888888;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border-radius: 10px;
+      }
+      #up img:hover{
+        transform: rotate(360deg);
+        transition: all 2s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section id="up">
+        <img id="img1" src="../Dr Stone playlist/images/1.png" />
+        <img id="img2" src="../Dr Stone playlist/images/2.png" />
+        <img id="img3" src="../Dr Stone playlist/images/3.png" />
+        <img id="img4" src="../Dr Stone playlist/images/4.png" />
+        <img id="img5" src="../Dr Stone playlist/images/5.png" />
+        <img id="img6" src="../Dr Stone playlist/images/6.png" />
+        <img id="img7" src="../Dr Stone playlist/images/7.png" />
+        <img id="img8" src="../Dr Stone playlist/images/8.png" />
+      </section>
+      <section id="down"></section>
+      
+    </main>
+
+    <script>
+      // images -> dragstart , dragend
+      window.addEventListener("load", function(){
+        const downSection = document.getElementById("down");
+        const upSection = document.getElementById("up");
+        const images = document.images;
+
+        for(i = 0; i < images.length; i++){
+          images[i].addEventListener("dragstart", function (e) {
+            console.log("Dragging image:", e.target.outerHTML);
+            e.dataTransfer.setData("myImg", e.target.outerHTML);
+            e.dataTransfer.setData("imgId", e.target.id);
+          });
+
+          images[i].addEventListener("dragend", function (e) {
+            console.log("Drag ended for image:", e.target.src);
+          });
+        }
+
+        // rightSection -> dragleave
+        upSection.addEventListener("dragleave", function(e){
+          e.preventDefault();
+        })
+
+
+        // LeftSection -> dragenter, dragover, drop
+        downSection.addEventListener("dragenter", function(e){
+          e.preventDefault();
+          downSection.style.backgroundColor = "#f0f0f0";
+        });
+
+        downSection.addEventListener("dragover", function(e){
+          e.preventDefault();
+        });
+
+
+        downSection.addEventListener("drop", function(e){
+          e.preventDefault();
+          downSection.innerHTML += e.dataTransfer.getData("myImg");
+          const draggedImgId = e.dataTransfer.getData("imgId");
+          document.getElementById(draggedImgId).style.display = "none";
+
+        });
+      })
+    </script>
+  </body>
+</html>

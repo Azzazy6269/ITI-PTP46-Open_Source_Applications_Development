@@ -1,0 +1,117 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.desert{
+  height: 70vh;
+  width: 100%;
+  background: url("Imgs/Saharasunset-2.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.desert h1 {
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: up_down 2s linear infinite ;
+}
+.forest{
+  height: 70vh;
+  width: 100%;
+  background: url("Imgs/copertina-1.jpg");
+  background-size: cover;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+ box-sizing: border-box;
+
+}
+
+.forest h1 {
+  color: white;
+  text-align:center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+   animation: ghosting 2s linear infinite ;
+
+}
+.canyon{
+  height: 70vh;
+  width: 100%;
+  background: url("Imgs/cover_5fc61b1366d38.jpeg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.canyon h1 {
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    animation: rotation 2s linear infinite ;
+
+}
+.glasier{
+  height: 70vh;
+  width: 100%;
+  background: url("Imgs/14588423-the-glasier-in-newzealand.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.glasier h1 {
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+      animation: resizing 2s linear infinite ;
+
+}
+
+@keyframes up_down {
+    0% {transform:translateY(100px);}
+    50% {transform:translateY(0px);}
+    100% {transform:translateY(100px);}
+}
+
+@keyframes ghosting {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes rotation {
+    0% {transform:rotate(0deg);}
+    50% {transform:rotate(180deg);}
+    100% {transform:rotate(360deg);}
+}
+
+@keyframes resizing {
+    0% {font-size: 10px;}
+    50% {font-size: 60px;}
+    100% {font-size: 10px;}
+}

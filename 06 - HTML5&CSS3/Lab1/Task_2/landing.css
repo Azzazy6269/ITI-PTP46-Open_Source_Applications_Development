@@ -1,0 +1,219 @@
+*{
+    font-family: sans-serif;
+    padding-bottom: 40px  ;
+    margin:0;
+    line-height: 1.5;
+}
+
+
+.hero{
+    height: 100vh;
+    width:100vw;
+    background:url(png/activity3.png);
+    background-size: cover;
+    background-position: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-direction: column;
+    color:white;
+}
+
+.hero div {
+  width: 80%;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero h1{
+    margin-bottom: 20px ;
+}
+
+.hero p{
+    margin-bottom: 20px ;
+    font-size: large;
+}
+.hero button {
+    margin-bottom: 20px;
+    background: transparent;
+    border-radius: 10px;
+    height: 40px;
+    width: 125px;
+    color: white;
+    border-color: white ;
+    border: 1px solid white; 
+    font-size: large;
+    padding: 5px;    
+}
+.hero button:hover{
+    background-color: orange;
+}
+
+/*activties*****************************************/
+.activities{
+    box-sizing: border-box;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top:20px ;
+}
+.activities h1{
+    align-self: center;
+    margin-top: 40px;
+}
+
+.activities .container{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 85%;
+    gap:3px;
+}
+
+.activities .card{
+    flex :1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position:relative;
+}
+.image-bar{
+    position: relative;
+    overflow: hidden;
+}
+.activities .bar{
+  display: none;
+    bottom: 50px;
+position: absolute;
+width: 100%;
+  padding: 10px 10px;
+  background-color: #ff9999;
+  gap : 10%;
+  padding: 10px 10px;
+  
+}
+
+.activities .bar img{
+    width: 30px;
+    object-fit: contain;
+    height: auto;
+    display: block;
+}
+
+.activities p{
+    width:70%;
+    align-self: center;
+    text-align: center;
+}
+
+.activities .card img{
+    max-width: 100%;
+    height: auto;
+}
+
+.activities .card:hover .bar{
+    bottom: 0;
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+} 
+
+/*gallery**************************************/
+
+
+.gallery {
+  display: flex;
+  margin-top: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.gallery .imgbar{
+    width:25%;
+}
+.gallery .imgbar img {
+  width: 100%;
+  filter: blur(2px);
+}
+.gallery .imgbar p {
+  display: none;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto 50px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.gallery .imgbar:hover img {
+  transform: scale(1.25);
+  filter: blur(0);
+}
+.gallery .imgbar:hover p {
+  display: block;
+}
+
+
+
+@media (max-width: 768px) {
+  
+.activities{
+padding-left:0 ;
+padding-right:0 ;
+align-items:stretch;
+ }
+.activities .container{
+    display:flex;
+    flex-direction: column;
+    max-width: 100%;
+    gap:0px;
+    padding: 0;
+    margin:0;
+    }
+
+  .card {
+    display: block;    
+    width: 100%;        
+    margin: 0;
+    padding: 0;
+    margin:0;
+    align-items:stretch;
+    box-sizing: border-box;
+  }
+
+  .gallery {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    height: auto;   
+    padding: 0;
+    margin:0;
+    align-items:stretch;     
+  }
+
+  .gallery .imgbar {
+    width: 100%  !important;        
+    margin-bottom: 10px;   
+  }
+
+  .gallery .imgbar img {
+    filter: blur(0);        
+  }
+
+  .gallery .imgbar p {
+    display: block;         
+    padding: 10px;
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Store Products</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fake Store</h1>
+
+        <!-- Load Products Button -->
+        <button id="loadProductsBtn">
+            Load Products
+        </button>
+
+        <!-- Products Dropdown -->
+        <select id="productsDropdown" disabled>
+            <option>Loading products...</option>
+        </select>
+
+        <!-- Load Details Button -->
+        <button id="loadDetailsBtn" disabled>
+            Load Details
+        </button>
+
+        <!-- Product Card -->
+        <div id="productCard" class="card hidden">
+            <img id="productImage" alt="Product Image">
+
+            <div class="card-content">
+                <h3 id="productPrice"></h3>
+                <p id="productDescription"></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

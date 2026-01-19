@@ -1,0 +1,20 @@
+
+1- make enhances on media player that build in lecture 
+	- add subtitle and translation
+	- quality
+	- search about <video></video> <source></source> and why we use it 
+	- extension of video supported by browser
+
+	
+2- design video playlist, draganddrio, geolocation task only in video in the link 
+	https://drive.google.com/file/d/10LUiMfLFvJpzFOCCaygVq2yfxU48q8ja/view?usp=sharing
+
+	عباره عن بلاي ليست الجزء الي علي اليمين في ليست من الفيديوز (بنضيفهم باستخدام كود جافا سكريبكت كمصفوفه من الفيديوز )
+	- الجزء علي اليمين للفديو وشغال اول ما افتح الصفحه
+	- ب hover علي الفيديو بيكبر
+	- single click -> play and pause
+	- double click on video -> full screen
+	- applay some animation like showen in video recorded when hover on any one in right content 
+	- عند الضغط علي اي فديو في البلاي ليست هيتم تغيير الفديو في الجزء اليمين ليصبح بالفديو الي عملت كليك عليه
+
+	- make play list dynamic (if i need to increase videos)

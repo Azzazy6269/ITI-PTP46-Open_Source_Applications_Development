@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mymap{
+            width: 80vw;
+            height: 80vh;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI"></script>
+</head>
+<body>
+    <button id="getlocationBtn" onclick="getLocationDate();">Get Location</button>
+    <div id="mymap"></div>
+    <script>
+        function getLocationDate(){
+            // 1- check avaialitiy of geolocation in user browser 
+            if(navigator.geolocation) {
+                // 2-get permsission
+                this.navigator.geolocation.getCurrentPosition(getposition, errorhandelere);
+            } else {
+                // user geolocation in browser
+            }
+        }
+
+        function getposition(position){
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            console.log("lat", latitude);
+            console.log("longitude", longitude)
+            console.log(new Date(position.timestamp))
+
+            // create google maps
+            var location = new google.maps.LatLng(latitude, longitude);
+            let mymap = document.getElementById("mymap");
+
+            // zoom , sepection
+            var sep = {
+                zoom: 17,
+                center: location
+            };
+
+            new google.maps.Map(mymap, sep);
+        }
+
+        function errorhandelere(){
+            alert("geo location not access")
+        }
+    </script>
+</body>
+</html>

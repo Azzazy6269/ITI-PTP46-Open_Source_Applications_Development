@@ -1,0 +1,136 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+body{
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width : 100vw;
+}
+
+aside{
+    height: 100vh;
+    width: 20vw;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 4fr 4fr 1fr 4fr 6fr 2fr;
+    row-gap: 0;
+    justify-items: flex-start;
+    align-items: center;
+    padding-left: 20px;
+}
+aside h1{
+    font-size: 80px;
+    
+}
+aside ul{
+    list-style: none;
+    margin-left: 15px;
+}
+aside li{
+    margin-bottom:10px;
+    text-decoration: none;
+    list-style: none;
+    color: rgb(75, 71, 71);
+    cursor: pointer;
+}
+aside li:hover{
+    color: black;
+    font-weight: bold;
+}
+.social{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.social img{
+    width:30px;
+    height:30px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.social img:hover{
+    width:35px;
+    height:35px;
+    
+}
+.text h3{
+    margin-bottom: 10px;
+}
+.text P{
+    line-height: 22PX;
+    font-size: 16px;
+    color: rgb(75, 71, 71);
+}
+
+.filker{
+    display: flex;
+    flex-direction:column;
+    
+    gap: 10px;
+}
+.filkergallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.filker img{
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.container{
+    height: 100vh;
+    width: 80vw;
+    background-color: lightgray;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+nav{
+    height: 6vh;
+     background-color:rgb(194, 170, 61);
+}
+nav ul{
+    color:white;
+    display: flex;
+    list-style: none;
+    
+
+}
+nav li{
+    margin:10px;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    cursor: pointer;
+    
+}
+nav li:hover{
+    background-color: rgb(220, 198, 100);
+    border-radius: 2px;
+    
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.content img{
+    width:20vw;
+    height: 30.8vh;
+    cursor: pointer;
+}

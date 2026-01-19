@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML5 Video Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="index.css" />
+</head>
+
+
+
+<body>
+  <div class="playlist">
+    <ul class="list">
+      <li id="eps1">
+        <img src="../Dr Stone playlist/images/1.png"/>
+        <p>episode 1</p>
+      </li>
+      <li id="eps2">
+        <img src="../Dr Stone playlist/images/2.png"/>
+        <p>episode 2</p>
+      </li>
+      <li id="eps3">
+        <img src="../Dr Stone playlist/images/3.png"/>
+        <p>episode 3</p>
+      </li>
+      <li id="eps4">
+        <img src="../Dr Stone playlist/images/4.png"/>
+        <p>episode 4</p>
+      </li>
+      <li id="eps5">
+        <img src="../Dr Stone playlist/images/5.png"/>
+        <p>episode 5</p>
+      </li>
+      <li id="eps6">
+        <img src="../Dr Stone playlist/images/6.png"/>
+        <p>episode 6</p>
+      </li>
+      <li id="eps7">
+        <img src="../Dr Stone playlist/images/7.png"/>
+        <p>episode 7</p>
+      </li>
+      <li id="eps8">
+        <img src="../Dr Stone playlist/images/8.png"/>
+        <p>episode 8</p>
+      </li>
+      <li id="eps9">
+        <img src="../Dr Stone playlist/images/9.png"/>
+        <p>episode 9</p>
+      </li>
+      <li>
+        <button id="addBtn">Add one more video</button>
+      </li>
+    </ul>
+  </div>
+ 
+
+  <div class="selected_video">
+    <video id="videoPlayer" src="../Dr Stone playlist/Dr Stone S1 EP01.mp4" poster="../Dr Stone playlist/images/1.png" ></video>
+  <input type="range" name="" id="seekBar" min="0" max="100" value="0" onchange="seekVideo(event)"
+    style="width: 80vw" />
+  <section id="controls">
+    <button id="playPauseButton" onclick="togglePlayPause()">Play</button>
+    <button id="forwaredButton" onclick="forwardFunction()">
+      <i class="fa-solid fa-rotate-right"></i>10
+    </button>
+    <button id="backwardButton" onclick="backwardFunction()">
+      <i class="fa-solid fa-rotate-left"></i>10
+    </button>
+
+    <select id="videoSizeSelect" onchange="changeVideoSize(event)">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+
+    <!-- مستوى الـ صوت -->
+    <input type="range" id="volumeRange" min="0" max="1" step="0.1" value="0.5" onchange="changeVolume(event)" />
+
+    <!-- سرعة التشغيل -->
+    <!-- <input type="range" id="playbackSpeedRange"
+               min="0.5" max="2" step="0.1" value="1"
+               onchange="changePlaybackSpeed(event)"> -->
+
+    <select id="playbackSpeedSelect" onchange="changePlaybackSpeed(event)">
+      <option value="0.5">0.5x</option>
+      <option value="1">1x</option>
+      <option value="1.25">1.25x</option>
+      <option value="1.5">1.5x</option>
+      <option value="2">2x</option>
+    </select>
+
+    <input type="checkbox" id="muteCheckbox" onchange="toggleMute()" />
+    <label>Mute</label>
+    <input type="checkbox" id="loopCheckbox" onchange="toggleLoop()" />
+    <label>Loop</label>
+
+    <button id="fullscreenButton">
+      <i class="fa-solid fa-expand" onclick="toggleFullScreen()"></i>
+    </button>
+  </section>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>

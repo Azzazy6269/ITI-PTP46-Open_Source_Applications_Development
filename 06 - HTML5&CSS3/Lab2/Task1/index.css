@@ -1,0 +1,59 @@
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 100px 100px ;
+}
+
+header button{
+    padding: 10px 20px;
+    margin : 30px;
+    background-color: #0297fa;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+#rectangle {
+  width: 200px;
+  height: 100px;
+  background-color: red;
+  margin: 0 auto;
+  animation: move 4s  infinite;
+  animation-play-state: paused;
+}
+
+#rectangle.hover-scale {
+    transform: scale(1.5);
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-100px, -100px);
+    background-color: red ;
+  }
+
+  25% {
+    transform: translate(100px, -100px);
+    background-color:cadetblue ;
+  }
+
+  50% {
+    transform: translate(100px, 100px);
+    background-color: yellowgreen;
+  }
+
+  75% {
+    transform: translate(-100px, 100px);
+    background-color:darkmagenta ;
+  }
+
+  100% {
+    transform: translate(-100px, -100px);
+    
+  }
+}
+
+

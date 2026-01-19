@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML5 Video Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    video {
+      width: 80vw;
+      /* height: 80vh; */
+      max-width: 80vw;
+      max-height: 71vh;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    #seekBar {
+      width: 80vw;
+      max-width: 80vw;
+      cursor: pointer;
+    }
+
+    #controls {
+      width: 80vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background-color: #ddd;
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      padding: 6px 12px;
+      cursor: pointer;
+      background-color: steelblue;
+      color: white;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #013974;
+    }
+
+    select {
+      padding: 6px 10px;
+      cursor: pointer;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input {
+      cursor: pointer;
+      padding: 0 4px 0 0;
+    }
+
+    label {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <video id="videoPlayer" poster="copertina-1.jpg" >
+    <source src="../Dr Stone playlist/Dr Stone S1 EP01.mp4" type="video/mp4" data-quality="360">
+    <source src="../Dr Stone playlist/Dr Stone S1 EP02.mp4" type="video/mp4" data-quality="720">
+    <source src="../Dr Stone playlist/Dr. Stone E3 .mp4" type="video/mp4" data-quality="1080">
+    <track src="" kind="subtitles" srclang="en" label="English" default />
+  </video>
+  <input type="range" name="" id="seekBar" min="0" max="100" value="0" onchange="seekVideo(event)"
+    style="width: 80vw" />
+  <section id="controls">
+    <button id="playPauseButton" onclick="togglePlayPause()">Play</button>
+    <button id="forwaredButton" onclick="forwardFunction()">
+      <i class="fa-solid fa-rotate-right"></i>10
+    </button>
+    <button id="backwardButton" onclick="backwardFunction()">
+      <i class="fa-solid fa-rotate-left"></i>10
+    </button>
+
+    <select id="videoSizeSelect" onchange="changeVideoSize(event)">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+
+    <!-- مستوى الـ صوت -->
+    <input type="range" id="volumeRange" min="0" max="1" step="0.1" value="0.5" onchange="changeVolume(event)" />
+
+    <!-- سرعة التشغيل -->
+    <!-- <input type="range" id="playbackSpeedRange"
+               min="0.5" max="2" step="0.1" value="1"
+               onchange="changePlaybackSpeed(event)"> -->
+
+    <select id="playbackSpeedSelect" onchange="changePlaybackSpeed(event)">
+      <option value="0.5">0.5x</option>
+      <option value="1">1x</option>
+      <option value="1.25">1.25x</option>
+      <option value="1.5">1.5x</option>
+      <option value="2">2x</option>
+    </select>
+
+    <select id="qualitySelect" onchange="changeQuality()">
+      <option value="360">360p</option>
+      <option value="720">720p</option>
+      <option value="1080">1080p</option>
+    </select>
+
+    <input type="checkbox" id="muteCheckbox" onchange="toggleMute()" />
+    <label>Mute</label>
+    <input type="checkbox" id="loopCheckbox" onchange="toggleLoop()" />
+    <label>Loop</label>
+
+    <button id="fullscreenButton">
+      <i class="fa-solid fa-expand" onclick="toggleFullScreen()"></i>
+    </button>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cookie</title>
+    <script>
+      var username = "Mona Ali",
+        token = "monaali123";
+      // Set (expires in 7 days)
+      document.cookie = "token=" + token + ";expires=" + 7 * 24 * 60 * 60;
+      console.log(document.cookie); // Get
+
+      // ----------------------Local storage------------------------
+      localStorage.setItem("username", "Mona Ali"); // set
+      let user = localStorage.getItem("username"); // get
+      // localStorage.removeItem("username"); // remove
+      // localStorage.clear(); // Clear all
+
+      // ----------------------Session storage----------------------
+      sessionStorage.setItem("session_id", "session_12345");
+      sessionStorage.setItem("name", "mona");
+      let session = sessionStorage.getItem("session_id");
+      console.log(session);
+      // sessionStorage.removeItem("session_id");
+      // sessionStorage.clear();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

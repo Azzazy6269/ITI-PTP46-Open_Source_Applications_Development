@@ -1,0 +1,114 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    .selected_video{
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .playlist{
+      width: 220px;
+      height: 80vh;
+      border: 1px solid #060606;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      overflow: auto;
+    }
+    .playlist p{
+      margin-left:20px ;
+    }
+    .playlist img{
+      max-width: 120px;
+      border-radius: 10px;
+    }
+
+    .playlist ul{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .playlist li{
+      display: flex;
+      flex-direction: row;
+      align-items: center !important;
+    }
+    .playlist button{
+      width:100% !important;
+    }
+    .playlist li:hover{
+      background-color: #918f8f;
+    }
+    video {
+      width: 80vw;
+      max-width: 80vw;
+      max-height: 71vh;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    #seekBar {
+      width: 80vw;
+      max-width: 80vw;
+      cursor: pointer;
+    }
+
+    #controls {
+      width: 80vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background-color: #ddd;
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      padding: 6px 12px;
+      cursor: pointer;
+      background-color: steelblue;
+      color: white;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #013974;
+    }
+
+    select {
+      padding: 6px 10px;
+      cursor: pointer;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input {
+      cursor: pointer;
+      padding: 0 4px 0 0;
+    }
+
+    label {
+      font-size: 14px;
+      color: #333;
+    }

@@ -1,0 +1,68 @@
+p{
+    color: blue;
+    font-size: 15px;
+    
+}
+
+h1{
+    color:brown;
+}
+h2{
+    color:rgb(123, 169, 16)
+}
+h3{
+    color:rgb(22, 159, 75)
+}
+h4{
+    color:rgb(255, 21, 21)
+}
+h5{
+    color:rgb(255, 146, 21)
+}
+h6{
+    color:rgb(7, 166, 202)
+}
+.tips{
+    color: rgb(0, 255, 140);
+    font-style: italic;
+}
+body{
+    background-color: rgb(244, 212, 212);
+}
+.header{
+    text-align: center;
+}
+
+.header h1{
+    color: rgb(95, 0, 122);
+}
+.header p{
+    color:black;
+}
+
+.about {
+    border: 3px rgb(0, 227, 248) solid;
+    padding: 15px 40px;
+    overflow: hidden; 
+    margin:6%;
+    background-color: rgba(176, 231, 235, 0.416);
+}
+.about:hover {
+    border: 6px rgb(0, 124, 248) solid;
+    padding: 15px 40px;
+    overflow: hidden; 
+}
+.about .left {
+    float: left;
+    width: 45%;
+    margin-right: 5%;
+}
+
+.about .right {
+    float: right;
+    width: 45%;
+}
+
+.about img {
+    width: 100%; 
+}

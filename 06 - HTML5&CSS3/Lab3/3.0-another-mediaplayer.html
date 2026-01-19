@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      section {
+        border: 1px solid black;
+      }
+      #mainwrapper {
+        display: flex;
+        width: 80vw;
+        height: 80vh;
+        margin: 20px auto;
+      }
+      #mainwrapper > section {
+        width: 200px;
+        margin: 2rem;
+      }
+      #videowrapper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #controlswrapper {
+        padding: 0.2rem;
+      }
+
+      details {
+        border: 1px solid black;
+        padding: 10px 2px;
+        margin: 5px 0;
+
+        font: bold 15px verdana;
+      }
+      details:nth-child(odd) {
+        background-color: lightseagreen;
+      }
+
+      details:nth-child(even) {
+        background-color: lightpink;
+      }
+
+      input[type="button"] {
+        width: 70px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-weight: bold;
+        padding: 5px 2px;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        // video
+        myvideo = document.getElementById("myvideo");
+        // playpausebtn
+        playpausebtn = document.getElementById("playpausebtn");
+      });
+      //end of load
+
+      function playpausefun() {
+        if (myvideo.paused) {
+          myvideo.play();
+          playpausebtn.value = "Pause";
+        } else {
+          myvideo.pause();
+          playpausebtn.value = "Play";
+        }
+      }
+      function changemediasize(e) {
+        switch (e.target.value) {
+          case "small":
+            myvideo.width = myvideo.height = 400;
+            break;
+          case "medium":
+            myvideo.width = myvideo.height = 500;
+            break;
+          case "large":
+            myvideo.width = myvideo.height = 600;
+            break;
+          case "fullscreen":
+            myvideo.requestFullscreen();
+            break;
+          default:
+        }
+      }
+
+      function mutefun() {
+        if (myvideo.muted) {
+          myvideo.muted = false;
+        } else {
+          myvideo.muted = true;
+        }
+      }
+
+      function loopfun() {
+        if (myvideo.loop) {
+          myvideo.loop = false;
+        } else {
+          myvideo.loop = true;
+        }
+      }
+
+      function changevolumefun(e) {
+        myvideo.volume = e.target.value;
+      }
+
+      function changeseekbarfun(e) {
+        myvideo.currentTime = (e.target.value * myvideo.duration) / 100;
+      }
+
+      function forwardfun() {
+        myvideo.playbackRate++;
+      }
+
+      function backwordfun() {
+        myvideo.playbackRate--;
+        if (myvideo.playbackRate <= 0) {
+          myvideo.playbackRate = 1;
+        }
+      }
+
+      function Slowfun() {
+        myvideo.playbackRate = 0.2;
+      }
+    </script>
+  </head>
+  <body>
+    <!--
+        play|pause
+        size
+        Mute -  Loop
+        sound volume
+        Seekbar -> currentTime ,duration
+        Play Back speed >> << slow (button) -> playbackRate
+
+        How to add subtitle
+        how to control quilty
+        move seekbar 
+        when use video as open and close tag
+        qudes run over web
+    -->
+    <section id="mainwrapper">
+      <section id="controlswrapper">
+        <details>
+          <summary>Play | Pause</summary>
+          <input
+            type="button"
+            value="Play"
+            id="playpausebtn"
+            onclick="playpausefun();"
+          />
+        </details>
+        <details>
+          <summary>Media Size</summary>
+          <select onchange="changemediasize(event);">
+            <option>Select media Size</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="fullscreen">FullScreen</option>
+          </select>
+        </details>
+        <details>
+          <summary>Mute | Loop</summary>
+          <input type="checkbox" onchange="mutefun();" /> Mute <br />
+          <input type="checkbox" onchange="loopfun();" /> Loop
+        </details>
+        <details>
+          <summary>volume</summary>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.5"
+            onchange="changevolumefun(event);"
+          />
+        </details>
+        <details>
+          <summary>Seekbar</summary>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="any"
+            value="0"
+            onchange="changeseekbarfun(event);"
+          />
+        </details>
+        <details>
+          <summary>>> | <<</summary>
+          <input type="button" value=">>" onclick="forwardfun();" />
+          <input type="button" value="<<" onclick="backwordfun();" />
+          <input type="button" value="Slow" onclick="Slowfun();" />
+        </details>
+      </section>
+      <section id="videowrapper">
+        <video id="myvideo" src="video2.mp4" width="500" height="500" />
+        <!-- <audio id="myvideo" src="audio.mp3" controls/> -->
+        <!--<video>
+                <source src="" />
+                <source src="" />
+            </video>-->
+      </section>
+    </section>
+  </body>
+</html>
