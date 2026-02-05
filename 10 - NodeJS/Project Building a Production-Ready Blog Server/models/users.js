@@ -10,7 +10,9 @@ const userSchema = new mongoose.Schema({
     profilePicture: {
         url: { type: String, default: "" },
         fileId: { type: String, default: "" }
-    }
+    },
+    passwordResetToken:{type:String},
+    passwordResetExpires:{type:Date}
 }, { timestamps: true });
 
 userSchema.index({ email: 1 }, { unique: true });
