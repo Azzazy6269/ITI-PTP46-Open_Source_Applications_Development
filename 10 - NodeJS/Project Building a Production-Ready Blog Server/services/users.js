@@ -32,7 +32,7 @@ const signIn = async ({ email, password }) => {
     const isPasswordMatched = await bcrypt.compare(password, user.password);
     if (!isPasswordMatched) {
         throw new APIError("Invalid email or password", 401);
-    }
+    } 
     const payload = {
         userId: user._id,
         role: user.role

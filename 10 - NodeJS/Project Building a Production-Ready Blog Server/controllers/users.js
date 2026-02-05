@@ -1,7 +1,11 @@
 const UserService = require('../services/users');
+const PasswordReset = require('../services/passwordReset');
 const ImageKitService = require('../services/imageKit');
 const User = require('../models/users');
 const APIError = require('../utils/APIError');
+const sendEmailService = require("../services/email");
+const bcrypt = require('bcrypt');
+
 
 
 const signUp = async (req, res, next) => {
@@ -27,6 +31,7 @@ const getAllUsers = async (req, res) => {
 
     res.status(200).json({ message: "Users fetched successfully", data: users, pagenation })
 }
+
 
 const getUserById = async (req, res) => {
     const { id } = req.params;
@@ -59,6 +64,7 @@ const deleteUserById = async (req, res) => {
     res.status(200).json({ message: "User deleted successfully" })
 }
 
+
 const uploadProfileImage = async (req, res, next) => {
     try {
         if (!req.file) {
@@ -72,16 +78,16 @@ const uploadProfileImage = async (req, res, next) => {
         }
         console.log(req.user.userId);
         const updatedUser = await User.findByIdAndUpdate(
-            req.user.userId, 
-            { 
-                $set: { 
+            req.user.userId,
+            {
+                $set: {
                     profilePicture: {
                         url: uploadResponse.url,
                         fileId: uploadResponse.fileId
                     }
                 }
-            }, 
-            { new: true, runValidators: true } 
+            },
+            { new: true, runValidators: true }
         );
 
         if (!updatedUser) {
@@ -105,11 +111,68 @@ const deleteProfileImage = async (req, res, next) => {
                 fileId: ""
             }
         }
-        const updatedUser = await User.findByIdAndUpdate(req.user.userId , userData, { new: true });
+        const updatedUser = await User.findByIdAndUpdate(req.user.userId, userData, { new: true });
         res.status(200).json({ status: 'success', data: { user: updatedUser } });
     } catch (error) {
         next(error);
     }
 }
 
-module.exports = { signUp, signIn, getAllUsers, getUserById, updateUserById, deleteUserById, uploadProfileImage, deleteProfileImage };
+
+const forgotPassword = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const user = await User.findOne({email});
+        console.log(user);
+        if(!user){
+            throw new APIError("can't find user",404);
+        }
+        const resetToken = await PasswordReset.generateResetToken();
+        const userWithToken = await PasswordReset.saveResetToken(user._id, resetToken);
+        await sendEmailService.sendPasswordResetEmail(userWithToken, resetToken);
+    } catch (error) {
+        next(error)
+    }
+    res.status(200).json({ status: 'success' });
+}
+
+
+const resetPassword = async (req, res, next) => {
+    try {
+        const { token } = req.params;
+        const { newPassword } = req.body;
+        const user = await PasswordReset.verifyResetToken(token);
+        if (!user) {
+            throw new APIError("there's no user with this token OR the token is expired", 404);
+        }
+        const updatedUser = await PasswordReset.resetPassword(user, newPassword);
+        await sendEmailService.sendPasswordResetConfirmation(updatedUser);
+        res.status(200).json({ message: "User's password updated successfully", data: updatedUser })
+    } catch (error) {
+        next(error);
+    }
+
+}
+
+
+const changePassword = async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    const user = await User.findById(req.user.userId);
+
+    const isPasswordMatched = await bcrypt.compare(currentPassword, user.password);
+    if (!isPasswordMatched) {
+        throw new APIError("Invalid password", 401);
+    }
+
+    const updatedUser = await PasswordReset.resetPassword(user, newPassword);
+    await sendEmailService.sendPasswordResetConfirmation(updatedUser);
+    res.status(200).json({ message: "User's password updated successfully", data: updatedUser })
+    return updatedUser;
+}
+
+
+module.exports =
+{
+    signUp, signIn, getAllUsers, getUserById, updateUserById, deleteUserById,
+    uploadProfileImage, deleteProfileImage, forgotPassword, resetPassword, changePassword
+};

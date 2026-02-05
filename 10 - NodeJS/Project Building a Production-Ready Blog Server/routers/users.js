@@ -9,6 +9,19 @@ const imageKit = require('../middlewares/upload');
 
 const router = express.Router();
 
+
+//forgot-password
+router.post('/forgot-password' , validate(schemas.forgotPasswordSchema) , usersController.forgotPassword);
+
+//reset-password
+router.post('/reset-password/:token' , validate(schemas.resetPasswordSchema) , usersController.resetPassword);
+
+//change-password
+router.post('/change-password' , authenticate , validate(schemas.changePasswordSchema) , usersController.changePassword);
+
+//upload profile picture
+router.post('/profile-picture',authenticate , imageKit.uploadProfile , usersController.uploadProfileImage);
+
 //upload profile picture
 router.post('/profile-picture',authenticate , imageKit.uploadProfile , usersController.uploadProfileImage);
 
@@ -33,6 +46,7 @@ router.patch('/:id', authenticate , restrictToRolesorOwner.restrictTo(['admin'])
 
 // delete user by id
 router.delete('/:id', authenticate , restrictToRolesorOwner.restrictTo(['admin']) , usersController.deleteUserById);
+
 
 
 
