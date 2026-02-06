@@ -1,5 +1,6 @@
 const PostService = require('../services/posts');
 const Post = require('../models/posts');
+const User = require('../models/users');
 const ImageKitService = require('../services/imageKit');
 const APIError = require('../utils/APIError');
 
@@ -108,4 +109,59 @@ const deletePostImage = async (req, res, next) => {
     }
 }
 
-module.exports = { createPost , getAllPosts , getPostById , updatePostById , deletePostById , uploadPostImages , deletePostImage };
+const searchPosts = async(req,res ,next) =>{
+    try{
+        const {title,content} = req.query;
+        let posts,pagenation;
+        if(title){
+            ({posts,pagenation} = await PostService.searchPostByTitle(req.user.userId , title, req.query ,req.body));
+
+        }else if(content){
+            ({posts,pagenation} = await PostService.searchPostByContent(req.user.userId , content,req.query ,req.body));
+
+        }else{
+            res.status(400).json({ message: "you have to enter title or content to search with", data: posts, pagenation })
+            return;
+        }
+        res.status(201).json({ message: "Posts fetched successfully", data: posts, pagenation })
+
+
+    }catch(error){
+        next(error)
+    }
+}
+
+const getScheduledPosts = async(req,res,next)=>{
+    try{
+        ({posts,pagenation} = await PostService.getScheduledPosts(req.user.userId , req.query));
+        res.status(201).json({ message: "Posts fetched successfully", data: posts, pagenation });
+    }catch(error){
+        next(error);
+    }
+}
+
+const getPublishedPosts = async(req,res,next)=>{
+    try{
+        const user = User.findById(req.params.userId);
+        if(!user){
+            throw new APIError("user not found",404);
+        }
+        ({posts,pagenation} = await PostService.getPublishedPosts(req.params.userId , req.query));
+        res.status(201).json({ message: "Posts fetched successfully", data: posts, pagenation });
+    }catch(error){
+        next(error);
+    }
+}
+
+const getDraftPosts = async(req,res,next)=>{
+    try{
+        ({posts,pagenation} = await PostService.getDraftPosts(req.user.userId , req.query));
+        res.status(201).json({ message: "Posts fetched successfully", data: posts, pagenation });
+    }catch(error){
+        next(error);
+    }
+}
+
+module.exports = { createPost , getAllPosts , getPostById , updatePostById , deletePostById , uploadPostImages , deletePostImage ,
+    searchPosts , getScheduledPosts , getPublishedPosts , getDraftPosts
+};

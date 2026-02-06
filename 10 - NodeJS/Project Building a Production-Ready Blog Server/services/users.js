@@ -86,5 +86,45 @@ const deleteUserById = async (id) => {
     return deletedUser;
 }
 
+//search users by name
+const searchUsersByName = async(name,query)=>{
+    let { page , limit} = query;
+    page = Number(page);
+    limit = Number(limit);
+    const searchQuery = { name: { $regex: name, $options: 'i' } };
 
-module.exports = { signUp , signIn , getAllUsers, getUserById, updateUserById, deleteUserById };
+    const usersPromise = User.find(searchQuery).skip((page - 1) * limit).limit(limit);
+    const totalPromise = User.countDocuments(searchQuery);
+    const [users , total] = await Promise.all([usersPromise,totalPromise]);
+    
+    const pagenation = {
+            page,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit)
+        }
+    return {users  , pagenation};
+}
+
+//search users by email
+const searchUsersByEmail = async(email,query)=>{
+    let { page , limit} = query;
+    page = Number(page);
+    limit = Number(limit);
+    const searchQuery = {email};
+    
+    const usersPromise = User.find(searchQuery).skip((page - 1) * limit).limit(limit);
+    const totalPromise = User.countDocuments(searchQuery);
+    const [users , total] = await Promise.all([usersPromise,totalPromise]);
+    
+    const pagenation = {
+            page,
+            limit,
+            total,
+            totalPages: Math.ceil(total / limit)
+        }
+    return {users , pagenation};
+}
+
+
+module.exports = { signUp , signIn , getAllUsers, getUserById, updateUserById, deleteUserById, searchUsersByName, searchUsersByEmail };

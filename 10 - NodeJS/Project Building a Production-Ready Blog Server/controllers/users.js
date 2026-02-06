@@ -170,9 +170,31 @@ const changePassword = async (req, res) => {
     return updatedUser;
 }
 
+const searchUsers = async(req,res ,next) =>{
+    try{
+        const {name,email} = req.query;
+        let users,pagenation;
+        if(name){
+            ({users,pagenation} = await UserService.searchUsersByName( name, req.query));
+
+        }else if(email){
+            ({users,pagenation} = await UserService.searchUsersByEmail( email, req.query));
+
+        }else{
+            res.status(400).json({ message: "you have to enter name or email to search with", data: users, pagenation })
+            return;
+        }
+        res.status(201).json({ message: "users fetched successfully", data: users, pagenation })
+
+
+    }catch(error){
+        next(error)
+    }
+}
+
 
 module.exports =
 {
-    signUp, signIn, getAllUsers, getUserById, updateUserById, deleteUserById,
-    uploadProfileImage, deleteProfileImage, forgotPassword, resetPassword, changePassword
+    signUp, signIn, getAllUsers, getUserById, updateUserById, deleteUserById, uploadProfileImage,
+     deleteProfileImage, forgotPassword, resetPassword, changePassword ,searchUsers
 };

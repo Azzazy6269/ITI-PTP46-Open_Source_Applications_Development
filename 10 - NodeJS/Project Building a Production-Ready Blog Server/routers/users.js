@@ -9,6 +9,9 @@ const imageKit = require('../middlewares/upload');
 
 const router = express.Router();
 
+///users/search?name=:ammadibrahe //a part of the required name
+///users/search?email=:mohamed //whole the email
+router.get('/search',authenticate ,validate(schemas.searchUsersSchema), usersController.searchUsers);
 
 //forgot-password
 router.post('/forgot-password' , validate(schemas.forgotPasswordSchema) , usersController.forgotPassword);
@@ -17,7 +20,7 @@ router.post('/forgot-password' , validate(schemas.forgotPasswordSchema) , usersC
 router.post('/reset-password/:token' , validate(schemas.resetPasswordSchema) , usersController.resetPassword);
 
 //change-password
-router.post('/change-password' , authenticate , validate(schemas.changePasswordSchema) , usersController.changePassword);
+router.patch('/change-password' , authenticate , validate(schemas.changePasswordSchema) , usersController.changePassword);
 
 //upload profile picture
 router.post('/profile-picture',authenticate , imageKit.uploadProfile , usersController.uploadProfileImage);
@@ -35,7 +38,6 @@ router.post('/sign-up', validate(schemas.signUpSchema), usersController.signUp);
 router.post('/sign-in',validate(schemas.signInSchema), usersController.signIn)
 
 // get all users
-
 router.get('/', authenticate , restrictToRolesOnly.restrictTo(['admin']) , validate(schemas.getAllUsersSchema), usersController.getAllUsers);
 
 // get user by id

@@ -8,8 +8,13 @@ const postsSchema = mongoose.Schema({
     content:{type:String , required:true},
     //author:{type:String , required:true},
     tags:{type:[String]},
-    published:{type:Boolean , default:false},
+    status : {type:String,enum: ['published', 'scheduled','draft'] , default:'published'},
+    publishedAt:{type:Date}, 
     likes:{type:Number , default:0},
+    views: {
+        type: Number,
+        default: 0
+    },
     images: [
     {
         url: { type: String, required: true },

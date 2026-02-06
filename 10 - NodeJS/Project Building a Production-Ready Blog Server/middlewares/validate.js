@@ -1,11 +1,7 @@
 const APIError = require('../utils/APIError');
 
 module.exports = (schema) => {
-    if (!schema || Object.keys(schema).length === 0) {
-        console.error("❌ ERROR: Validation middleware received an empty or undefined schema!");
-    } else {
-        console.log("✅ Validation initialized for keys:", Object.keys(schema));
-    }
+    
     return (req, res, next) => {
         console.log("🚀 Request reached the validation function!");
         for (const key in schema) {
