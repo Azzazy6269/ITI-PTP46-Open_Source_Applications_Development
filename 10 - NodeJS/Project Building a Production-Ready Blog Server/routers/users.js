@@ -49,15 +49,15 @@ router.post('/:userId/follow' ,authenticate, validate(followSchemas.followUserSc
 
 //unfollow user
 //DELETE /users/:userId/unfollow
-router.delete('/:userId/unfollow' , authenticate,validate(followSchemas.unfollowUserSchema) , followsController.unfollowUser);
+router.delete('/:userId/unfollow' , authenticate , validate(followSchemas.unfollowUserSchema) , followsController.unfollowUser);
 
 //get all followers
 //GET /users/:userId/followers
-router.get('/:userId/followers' , authenticate,validate(followSchemas.getAllFollowersSchema) , followsController.getAllFollowers);
+router.get('/:userId/followers' , authenticate , validate(followSchemas.getAllFollowersSchema) , followsController.getAllFollowers);
 
 //get all followering
 //GET /users/:userId/following
-router.get('/:userId/following' , authenticate,validate(followSchemas.getAllFollowingsSchema) , followsController.getAllFollowings);
+router.get('/:userId/following' , authenticate,validate(followSchemas.getAllFollowingsSchema) , followsController.getAllFollowing);
 
 //is follow
 //GET /users/:userId/isfollow

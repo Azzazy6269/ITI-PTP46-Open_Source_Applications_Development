@@ -35,7 +35,7 @@ const getAllFollowers = async (req, res, next) => {
     }
 }
 
-const getAllFollowings = async (req,res,next)=>{
+const getAllFollowing = async (req,res,next)=>{
     try {
         const { userId } = req.params;
         const { followings, message } = await FollowService.getAllFollowing(userId);
@@ -56,5 +56,5 @@ const isFollow = async (req,res,next) =>{
     }
 }
 module.exports = {
-    followUser, unfollowUser , getAllFollowers , getAllFollowings , isFollow
+    followUser, unfollowUser , getAllFollowers , getAllFollowing , isFollow
 }

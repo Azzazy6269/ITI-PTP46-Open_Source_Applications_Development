@@ -20,22 +20,25 @@ const followUser = async(followerId,followingId)=>{
 }
 
 const unfollowUser = async(followerId,followingId)=>{
-    const unfollow = Follow.findOneAndDelete({followerId,followingId});
+    const unfollow = await Follow.findOneAndDelete({followerId,followingId});
+    if(!unfollow){
+        return {message:`unfollow failed`,unfollow};
+    }
     return {message:`unfollow successful`,unfollow};
 }
 
 const getAllFollowers = async(followingId)=>{
-    const followers = Follow.find({followingId}).populate('followerId','name email');
+    const followers =await Follow.find({followingId}).populate('followerId','name email');
     return {followers,message:"followers fetched successfully"};
 }
 
-const getAllFollowings = async(followerId)=>{
-    const followings = Follow.find({followerId}).populate('followingId','name email');
+const getAllFollowing = async(followerId)=>{
+    const followings = await Follow.find({followerId}).populate('followingId','name email');
     return {followings , message : "followings fetched successfully"};
 }
 
 const isFollow = async(followerId,followingId)=>{
-    const follow = Follow.find({followerId,followingId});
+    const follow = await Follow.findOne({followerId,followingId});
     if(follow){
         return true;
     }
@@ -43,5 +46,5 @@ const isFollow = async(followerId,followingId)=>{
 }
 
 module.exports = {
-    followUser , unfollowUser , getAllFollowers , getAllFollowings , isFollow
+    followUser , unfollowUser , getAllFollowers , getAllFollowing , isFollow
 }
