@@ -1,6 +1,8 @@
 const express = require('express');
 const usersController = require('../controllers/users');
+const followsController = require('../controllers/follows');
 const schemas = require('../schemas/users');
+const followSchemas = require('../schemas/follows');
 const validate = require('../middlewares/validate');
 const authenticate = require('../middlewares/authenticate');
 const restrictToRolesorOwner = require('../middlewares/restrictToRolesorOwner');
@@ -8,6 +10,7 @@ const restrictToRolesOnly = require('../middlewares/restrictToRolesOnly');
 const imageKit = require('../middlewares/upload');
 
 const router = express.Router();
+
 
 ///users/search?name=:ammadibrahe //a part of the required name
 ///users/search?email=:mohamed //whole the email
@@ -39,6 +42,26 @@ router.post('/sign-in',validate(schemas.signInSchema), usersController.signIn)
 
 // get all users
 router.get('/', authenticate , restrictToRolesOnly.restrictTo(['admin']) , validate(schemas.getAllUsersSchema), usersController.getAllUsers);
+
+//follow user
+//POST /users/:userId/follow
+router.post('/:userId/follow' ,authenticate, validate(followSchemas.followUserSchema) , followsController.followUser);
+
+//unfollow user
+//DELETE /users/:userId/unfollow
+router.delete('/:userId/unfollow' , authenticate,validate(followSchemas.unfollowUserSchema) , followsController.unfollowUser);
+
+//get all followers
+//GET /users/:userId/followers
+router.get('/:userId/followers' , authenticate,validate(followSchemas.getAllFollowersSchema) , followsController.getAllFollowers);
+
+//get all followering
+//GET /users/:userId/following
+router.get('/:userId/following' , authenticate,validate(followSchemas.getAllFollowingsSchema) , followsController.getAllFollowings);
+
+//is follow
+//GET /users/:userId/isfollow
+router.get('/:userId/isfollow' , authenticate,validate(followSchemas.isFollowSchema) , followsController.isFollow);
 
 // get user by id
 router.get('/:id', authenticate , restrictToRolesorOwner.restrictTo(['admin']) , usersController.getUserById);

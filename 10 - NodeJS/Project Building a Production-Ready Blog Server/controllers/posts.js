@@ -30,7 +30,8 @@ const getPostById = async (req, res, next) => {
         if (!post) {
             throw new APIError("Post not found", 404);
         }
-        res.status(200).json({ message: "Post fetched successfully", data: post });
+        res.status(200).json({ message: "Post fetched successfully . if it's the first time for the user to see this post the view should be increased automatically",
+             data: post });
     } catch (error) {
         next(error);
     }
@@ -162,6 +163,19 @@ const getDraftPosts = async(req,res,next)=>{
     }
 }
 
+const IncresePostViewById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const {post,message} = await PostService.IncresePostViewById(id, req.user.userId);
+        if (!post) {
+            throw new APIError("Post not found", 404);
+        }
+        res.status(200).json({ message, data: post });
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = { createPost , getAllPosts , getPostById , updatePostById , deletePostById , uploadPostImages , deletePostImage ,
-    searchPosts , getScheduledPosts , getPublishedPosts , getDraftPosts
+    searchPosts , getScheduledPosts , getPublishedPosts , getDraftPosts , IncresePostViewById
 };

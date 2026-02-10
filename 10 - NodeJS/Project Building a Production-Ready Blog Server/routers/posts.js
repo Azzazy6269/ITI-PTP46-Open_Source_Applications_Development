@@ -8,6 +8,9 @@ const restrictToRolesOnly = require('../middlewares/restrictToRolesOnly');
 const imageKit = require('../middlewares/upload');
 const router = express.Router();
 
+//increase view by 1 if the user hasn't seen the post before
+router.post('/:id/view',authenticate , postsController.IncresePostViewById);
+
 // get draft posts for author only
 //Get /posts/schedule
 router.get('/draft',authenticate ,validate(schemas.getDraftPostsSchema), postsController.getDraftPosts);
@@ -33,7 +36,7 @@ router.post('/', authenticate ,validate(schemas.createPostSchema), postsControll
 //http://localhost:3000/posts/
 router.get('/',  authenticate ,  validate(schemas.getAllPostsSchema), postsController.getAllPosts);
 
-// get post by id
+// get post by id //and increase view by 1 if the user hasn't seen the post before 
 //http://localhost:3000/posts/:id
 router.get('/:id',  authenticate ,postsController.getPostById);
 

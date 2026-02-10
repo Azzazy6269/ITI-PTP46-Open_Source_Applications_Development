@@ -34,7 +34,7 @@ const getAllPosts = async (query,userId)=>{
     return {posts : postsWithOwnership , pagenation};
 };
 
-//get post by ID
+//get post by ID 
 const getPostById = async (postId,userId)=>{
     let post =await Post.findOne({_id:postId , status:'published'}).populate('userId','name email');
     if(!post){
@@ -206,7 +206,24 @@ const getDraftPosts = async(userId , query)=>{
     return {posts , pagenation};
 }
 
+
+const IncresePostViewById = async (postId,userId)=>{
+    let post =await Post.findOne({_id:postId , status:'published'}).populate('userId','name email');
+    if(!post){
+        return null;
+    }
+    const viewLog = await View.findOne({userId,postId});
+
+    if(viewLog){
+        return {post,message :"user has seen this post before so view didn't increased"};
+    }else{
+        post =await Post.findByIdAndUpdate(postId,{ $inc: { views: 1 } },{new : true}).populate('userId','name email');
+        const view = await View.create({userId,postId});
+    }    
+    return {post,message :"view increased"};
+
+}
 module.exports = 
 { createPost, getAllPosts, getPostById, updatePostById, deletePostById, searchPostByTitle, 
-    searchPostByContent, getScheduledPosts ,getPublishedPosts ,getDraftPosts
+    searchPostByContent, getScheduledPosts ,getPublishedPosts ,getDraftPosts ,IncresePostViewById
 };
