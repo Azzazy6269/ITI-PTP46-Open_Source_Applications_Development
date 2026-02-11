@@ -1,12 +1,22 @@
 const express = require('express');
 const postsController = require('../controllers/posts');
 const schemas = require('../schemas/posts');
+const bookmarkController = require('../controllers/bookmarks');
+const BookmarkSchemas = require('../schemas/bookmarks');
 const validate = require('../middlewares/validate');
 const authenticate = require('../middlewares/authenticate');
 const restrictToRolesorOwner = require('../middlewares/restrictToRolesorOwner');
 const restrictToRolesOnly = require('../middlewares/restrictToRolesOnly');
 const imageKit = require('../middlewares/upload');
 const router = express.Router();
+
+
+//Bookmark a post 
+router.post('/:postId/bookmark',authenticate , validate(BookmarkSchemas.bookMarkPostSchema) , bookmarkController.bookMarkPost);
+
+//remove Bookmark a post 
+router.delete('/:postId/removebookmark',authenticate , validate(BookmarkSchemas.removeBookMarkSchema) , bookmarkController.removeBookMark);
+
 
 //increase view by 1 if the user hasn't seen the post before
 router.post('/:id/view',authenticate , postsController.IncresePostViewById);

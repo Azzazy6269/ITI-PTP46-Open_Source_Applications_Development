@@ -14,6 +14,7 @@ const postRouter = require('./routers/posts');
 const donationRouter = require('./routers/donations');
 const commentRouter = require('./routers/comments')
 const likeRouter = require('./routers/likes')
+const notificationRouter = require('./routers/notifications');
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
@@ -34,7 +35,7 @@ app.use('/posts', postRouter);
 app.use('/donations' ,donationRouter);
 app.use('/comments' ,commentRouter);
 app.use('/likes' ,likeRouter);
-
+app.use('/notifications',notificationRouter);
 
 app.use(errorHandler);
 

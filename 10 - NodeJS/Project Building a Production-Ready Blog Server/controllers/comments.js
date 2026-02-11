@@ -1,11 +1,12 @@
 const CommentService = require('../services/comments');
+const NotificationService = require('../services/notifications');
 const APIError = require('../utils/APIError');
 
 const createComment = async (req, res, next) => {
     try {
         const CommentData = { ...req.body, ...req.params };
-        const comment = await CommentService.createComment(CommentData , req?.user?.userId );
-        res.status(201).json({ message: "comment created successfully", data: comment });
+        const {createdComment ,notification} = await CommentService.createComment(CommentData , req?.user?.userId );
+        res.status(201).json({ message: "comment created successfully", createdComment ,notification });
     } catch (error) {
         next(error);
     }

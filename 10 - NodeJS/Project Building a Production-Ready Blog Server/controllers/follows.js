@@ -1,4 +1,5 @@
 const FollowService = require('../services/follows');
+const NotificationService = require('../services/notifications');
 const Follow = require('../models/follows');
 const APIError = require('../utils/APIError');
 
@@ -7,8 +8,8 @@ const followUser = async (req, res, next) => {
         console.log(req?.params?.userId,req?.user?.userId);
         const  followingId = req.params.userId;
         const followerId = req.user.userId;
-        const { followLog, message } = await FollowService.followUser(followerId, followingId);
-        res.status(201).json({ message, followLog });
+        const { followLog, message ,notification} = await FollowService.followUser(followerId, followingId);
+        res.status(201).json({ message, followLog , notification });
     } catch (error) {
         next(error);
     }

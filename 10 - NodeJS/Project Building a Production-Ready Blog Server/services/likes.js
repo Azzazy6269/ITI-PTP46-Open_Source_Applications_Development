@@ -1,17 +1,31 @@
 const Like = require("../models/likes");
 const Post = require('../models/posts');
 const Comment = require('../models/comments');
+const NotificationService = require('../services/notifications');
+
 
 const toggleLike = async (userId, targetType, targetId) => {
     const isLiked = await Like.findOne({ userId, targetType, targetId });
     const Model = targetType === 'Post' ? Post : Comment;
+    
         if (isLiked) {
         await Like.deleteOne({ userId, targetType, targetId });
         await Model.findByIdAndUpdate(targetId, { $inc: { likesCount: -1 } });
         return { case: "deletedLike", data: isLiked }; 
     } else {
         const createdLike = await Like.create({ userId, targetType, targetId });
-        await Model.findByIdAndUpdate(targetId, { $inc: { likesCount: 1 } });
+        const target = await Model.findByIdAndUpdate(targetId, { $inc: { likesCount: 1 } });
+        const notificationData = {
+            type : 'like',
+        };
+        notificationData.userId =target.userId;
+        notificationData.relatedUserId=userId;
+        if(targetType === 'Post'){
+            notificationData.relatedPostId = target.id;
+        }else{
+            notificationData.relatedCommentId = target.id;
+        }
+        const notification = await NotificationService.createNotification(notificationData);
         return { case: "createdLike", data: createdLike };
     }
 };

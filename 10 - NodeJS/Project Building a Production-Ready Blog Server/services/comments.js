@@ -1,8 +1,9 @@
 const Comment = require("../models/comments");
 const Post = require("../models/posts");
-const User = require("../models/users")
+const User = require("../models/users");
 const APIError = require("../utils/APIError");
 const { sendCommentNotification ,sendReplyNotification } = require('../services/email');
+const NotificationService = require('../services/notifications');
 
 //create comment or reply
 const createComment = async (commentData, userId)=>{
@@ -17,15 +18,29 @@ const createComment = async (commentData, userId)=>{
         const replier = await User.findById(userId);
         const parentComment = await Comment.findById(parentCommentId).populate('userId');
         await sendReplyNotification(parentComment.userId.email, replier, parentComment, createdComment);
-        return createdComment;
+        const notificationData = {
+            relatedUserId : userId,
+            userId : parentComment.userId,
+            type : "reply",
+            relatedPostId : parentComment.postId,
+            relatedCommentId : parentComment
+        };
+        const notification = await NotificationService.createNotification(notificationData);
+        return ({createdComment ,notification});
     }
     const post = await Post.findById(postId).populate('userId');
     if (!post) throw new APIError("Post not found", 404);
     const createdComment = await Comment.create({ ...commentData, userId });
     const commenter = await User.findById(userId);
     await sendCommentNotification(post.userId.email, commenter, post, createdComment);
-
-    return createdComment;
+    const notificationData = {
+            relatedUserId : userId,
+            userId : post.userId,
+            type : "comment",
+            relatedPostId : postId
+    };
+    const notification = await NotificationService.createNotification(notificationData);
+    return ({createdComment ,notification});
 }
 
 //get all comments

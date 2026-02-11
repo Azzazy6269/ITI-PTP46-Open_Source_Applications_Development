@@ -1,4 +1,5 @@
 const Follow = require('../models/follows');
+const NotificationService = require('../services/notifications');
 const User = require('../models/users');
 const APIError = require('../utils/APIError');
 
@@ -16,7 +17,15 @@ const followUser = async(followerId,followingId)=>{
         return {followLog : null ,message:"following not found"};
     }
     const follow = await Follow.create({followerId,followingId});
-    return {followLog : follow ,message:"successful proccess"};
+
+    const notificationData = {
+            userId : followingId,
+            relatedUserId : followerId,
+            type : 'follow',
+        }
+    const notification = await NotificationService.createNotification(notificationData);
+        
+    return {followLog : follow ,notification,message:"successful proccess"};
 }
 
 const unfollowUser = async(followerId,followingId)=>{
