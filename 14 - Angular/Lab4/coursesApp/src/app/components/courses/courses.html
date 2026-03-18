@@ -1,0 +1,35 @@
+
+<div class="row my-5 text-center"></div>
+<div class="row row-cols-1 row-cols-md-3 g-4 mx-5 my-5">
+    @for(course of filteredCourses ;track course.id){
+    <div class="col">
+        <div class="card" [ngStyle]="{'background-color':(course.seats==0)?'yellow':'white'}">
+            <img [src]="course.ImageUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{course.title}}</h5>
+                <p class="card-text">course instructor: {{course.instructor}}</p>
+
+                @if(course.seats==2 ||course.seats==1){
+                <p class="card-text" style="color:red;">available seats : {{course.seats}} . Almost full</p>
+                }@else if(course.seats==0){
+                <p style="color:red;">No available seats</p>
+                }@else{
+                <p class="card-text">available seats : {{course.seats}}</p>
+                }
+
+
+                @if(course.price | discount:20; as Price){
+                <p class="card-text">price : {{Price}}</p>
+                <div class="row gap=3">
+                <button class="btn btn-warning col-3 mx-2" [routerLink]="['/details',course.id]">View details</button>
+                <button appAppDisableAfterClick (click)="register(course.id,Price)" [disabled]="course.seats==0 || course.isEnrolled"
+                    class="btn btn-primary col-4">Register</button>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    }
+
+</div>

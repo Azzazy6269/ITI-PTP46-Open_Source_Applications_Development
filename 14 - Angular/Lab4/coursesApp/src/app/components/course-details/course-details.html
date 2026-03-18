@@ -1,0 +1,26 @@
+@if (course) {
+  <div class="card col-5" [ngStyle]="{'background-color': (course.seats == 0) ? 'yellow' : 'white'}">
+    <img [src]="course.ImageUrl" class="card-img-top" alt="...">
+    
+    <div class="card-body">
+      <h5 class="card-title">{{ course.title }}</h5>
+      <p class="card-text">course instructor: {{ course.instructor }}</p>
+
+      @if (course.seats == 2 || course.seats == 1) {
+        <p class="card-text" style="color:red;">
+          available seats : {{ course.seats }} . Almost full
+        </p>
+      } @else if (course.seats == 0) {
+        <p style="color:red;">No available seats</p>
+      } @else {
+        <p class="card-text">available seats : {{ course.seats }}</p>
+      }
+
+      @if (course.price | discount:20; as discountedPrice) {
+        <p class="card-text">price after discount: {{ discountedPrice }}</p>
+      }
+    </div>
+  </div>
+} @else {
+  <p>Loading course details...</p>
+}

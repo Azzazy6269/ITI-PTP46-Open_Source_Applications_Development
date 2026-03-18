@@ -1,0 +1,15 @@
+<div class="row my-5 text-center">
+        <h3>total price : {{totalCoursesPrice}}</h3>
+    <!--h3>total courses : {{totalCoursesNumber}}</h3-->
+</div>
+
+
+<div class="row justify-content-center">
+    <select class="form-select w-25" aria-label="Default select example" [(ngModel)]="selectedId">
+        <option selected disabled value=0>Please select category</option>
+        @for(cat of categories;track cat.id){
+        <option selected value="{{cat.id}}">{{cat.name}}</option>
+        }
+    </select>
+</div>
+<app-courses [sentSelectedId]="selectedId"  (OnTotalPriceChanges)="setOrderPrice($event)"></app-courses>

@@ -1,0 +1,76 @@
+<form class="w-50 m-auto" #courseForm="ngForm" (ngSubmit)="addNewCourse()">
+  <div class="my-3 ">
+    <label for="courseTitle" class="form-label">title</label>
+    <input type="text" class="form-control" id="courseTitle" [(ngModel)]="course.title" name="title" required
+      minlength="3" #courseName="ngModel">
+    @if(!courseName.valid && courseName.touched ){
+    @if(courseName.errors?.["required"]){
+    <p class="text-danger">required</p>
+    }@else{
+    <p class="text-danger">minlength is 3</p>
+    }
+    }
+  </div>
+
+
+  <div class="mb-3">
+    <label for="instructor" class="form-label">instructor</label>
+    <input type="text" class="form-control" id="instructor" [(ngModel)]="course.instructor" name="instructor" required
+      minlength="3" #courseInstructor="ngModel">
+    @if(!courseInstructor.valid && courseInstructor.touched ){
+    @if(courseInstructor.errors?.["required"]){
+    <p class="text-danger">required</p>
+    }
+    }
+  </div>
+
+
+  <div class="mb-3">
+    <label for="price" class="form-label">price</label>
+    <input type="number" class="form-control" id="price" [(ngModel)]="course.price" name="price" required minlength="0" #coursePrice="ngModel">
+    @if(!coursePrice.valid && coursePrice.touched ){
+    @if(coursePrice.errors?.["required"]){
+    <p class="text-danger">required</p>
+    }
+    }
+  </div>
+
+
+  <div class="mb-3">
+    <label for="seats" class="form-label">seats</label>
+    <input type="number" class="form-control" id="seats" [(ngModel)]="course.seats" name="seats" required minlength="1" #courseSeats="ngModel">
+    @if(!courseSeats.valid && courseSeats.touched ){
+    @if(courseSeats.errors?.["required"]){
+    <p class="text-danger">required</p>
+    }
+    }
+  </div>
+
+
+  <select class="form-select" aria-label="Default select example" [(ngModel)]="course.catId" name="catId" required #courseCatId="ngModel">
+    <option selected>Select categoty</option>
+    @for(cat of categories$|async ; track cat.id){
+    <option [value]="cat.id">{{cat.name}}</option>
+    }
+    @if(!courseCatId.valid && courseCatId.touched ){
+    @if(courseCatId.errors?.["required"]){
+    <p class="text-danger">required</p>
+    }
+    }
+  </select>
+
+
+  <div class="mb-3">
+    <label for="ImageUrl" class="form-label">ImageUrl</label>
+    <input type="text" class="form-control" id="catId" [(ngModel)]="course.ImageUrl" name="ImageUrl" required #courseImgUrl="ngModel">
+    @if(!courseImgUrl.valid && courseImgUrl.touched ){
+    @if(courseImgUrl.errors?.["required"]){
+    <p class="text-danger">required</p>
+    }
+    }
+  </div>
+
+  
+  <button type="submit" class="btn btn-primary" [disabled]="courseForm.invalid">Submit</button>
+
+</form>
