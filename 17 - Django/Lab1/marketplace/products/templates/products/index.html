@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>welcome to the Marketplace</h1>
+{{name}}
+<table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 90px;">ID</th>
+              <th>product Name</th>
+              <th>stock</th>
+              <th style="width: 160px;">price</th>
+              <th class="row-actions" style="width: 140px;">description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td class="row-actions">
+                  <a
+                    class="btn"
+                    href="{% url 'product' product.id %}"
+                    aria-label="Open product profile {{ product.name }}"
+                  >
+                    Show
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+{% endblock %}

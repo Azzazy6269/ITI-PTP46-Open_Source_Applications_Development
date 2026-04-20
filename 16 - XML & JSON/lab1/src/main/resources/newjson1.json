@@ -1,0 +1,102 @@
+{
+  "library": {
+    "location": "Cairo, Egypt",
+    "description": "Public library for students and researchers.",
+    "librarian": "Ahmed Hassan",
+    "books": [
+      {
+        "title": "Introduction to Programming",
+        "ISBN": "978-1234567890",
+        "author": "John Smith",
+        "parts": [
+          {
+            "title": "Programming Basics",
+            "chapters": [
+              {
+                "title": "Getting Started",
+                "summary": "This chapter introduces the fundamentals of programming.",
+                "sections": [
+                  {
+                    "content": {
+                      "paragrah": [
+                        "Programming is the process of writing instructions.",
+                        "A program solves a specific problem."
+                      ]
+                    }
+                  },
+                  {
+                    "content": {
+                      "paragrah": [
+                        "Algorithms are step-by-step solutions.",
+                        "Planning before coding is important."
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "Variables and Data Types",
+                "summary": "Explains how data is stored in memory.",
+                "sections": [
+                  {
+                    "content": {
+                      "paragrah": [
+                        "Variables store values in memory.",
+                        "Data types define the kind of data."
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Object-Oriented Programming",
+            "chapters": [
+              {
+                "title": "Classes and Objects",
+                "summary": "Core concepts of OOP.",
+                "sections": [
+                  {
+                    "content": {
+                      "paragrah": [
+                        "A class is a blueprint.",
+                        "An object is an instance of a class."
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Database Fundamentals",
+        "ISBN": "978-0987654321",
+        "author": "Sara Ali",
+        "parts": [
+          {
+            "title": "Introduction to Databases",
+            "chapters": [
+              {
+                "title": "What is a Database?",
+                "summary": "Defines databases and their importance.",
+                "sections": [
+                  {
+                    "content": {
+                      "paragrah": [
+                        "A database stores structured information.",
+                        "Databases help manage large amounts of data."
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

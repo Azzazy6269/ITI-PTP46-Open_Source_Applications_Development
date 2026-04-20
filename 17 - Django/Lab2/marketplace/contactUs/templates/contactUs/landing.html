@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="hero">
+        <h1>Contact Us</h1>
+        <p class="sub">Have a question? Send us a message and we'll get back to you shortly.</p>
+        <div class="card" style="margin-top:1rem;">
+            <form method="post">
+                {% csrf_token %}
+                <div style="display:flex;flex-direction:column;gap:.6rem;max-width:520px;">
+                    <input name="name" placeholder="Your name" style="padding:.6rem;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;" />
+                    <input name="email" placeholder="Email" style="padding:.6rem;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;" />
+                    <textarea name="message" placeholder="Message" rows="6" style="padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;"></textarea>
+                    <button class="cta" type="submit" style="width:160px">Send</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

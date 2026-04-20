@@ -1,0 +1,29 @@
+{
+  "name": "vue-project",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "@vueuse/core": "^14.2.1",
+    "json-server": "^1.0.0-beta.15",
+    "vue": "^3.5.31"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.5",
+    "autoprefixer": "^10.5.0",
+    "daisyui": "^5.5.19",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.3",
+    "vite-plugin-vue-devtools": "^8.1.1"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

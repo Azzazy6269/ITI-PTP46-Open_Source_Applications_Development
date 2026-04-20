@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="card">
+  <h1>Create Product</h1>
+  <p class="sub muted">Add a new product to the Marketplace.</p>
+
+  
+
+  <form method="post" enctype="multipart/form-data" class="product-form" style="display:grid;grid-template-columns:1fr 300px;gap:1rem;">
+    {% csrf_token %}
+
+    <div style="grid-column:1/-1">
+      <label for="id_name">Name <span style="color:var(--accent)">*</span></label>
+      <input id="id_name" name="name" type="text" required placeholder="Wireless Headphones" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+    </div>
+
+    <div>
+      <label for="id_price">Price</label>
+      <input id="id_price" name="price" type="number" step="0.01" min="0" placeholder="0.00" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+    </div>
+
+    <div>
+      <label for="id_stock">Stock / Brand</label>
+      <input id="id_stock" name="stock" type="text" placeholder="Soundcore" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+    </div>
+    <div>
+      <label for="id_category">Category</label>
+      <select id="id_category" name="category" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:#0e2238;color:inherit">
+        <option value="">Select a category</option>
+        {% for category in categories %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+
+    <div style="grid-column:1/-1">
+      <label for="id_description">Description</label>
+      <textarea id="id_description" name="description" rows="5" placeholder="Short description..." style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+    </div>
+
+    <div style="grid-column:1/-1">
+      <label for="id_image">Image URL</label>
+      <input id="id_image" name="image" type="file" placeholder="https://example.com/image.png" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+    </div>
+
+    <div style="grid-column:1/-1;display:flex;gap:.5rem;align-items:center;margin-top:.25rem">
+      <button class="btn" type="submit" style="background:linear-gradient(90deg,var(--accent),#ffb38a);color:#061022;padding:.45rem .75rem;border-radius:8px;border:0;font-weight:700">Create</button>
+      <a class="btn" href="{% url 'products.index' %}">Back to products</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

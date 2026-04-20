@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="card">
+  <h1>Create Product</h1>
+  <p class="sub muted">Add a new product to the Marketplace.</p>
+
+  
+
+  <div class="create-via-form-wrap">
+      <div class="panel reveal" style="padding: var(--space-4) var(--space-3);">
+        <form method="post" action="" aria-label="Create product form" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form}}
+          <div class="create-via-form-actions">
+            <button class="btn btn-primary" type="submit">Create Product</button>
+            <a class="btn" href="{% url 'products.index' %}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock %}

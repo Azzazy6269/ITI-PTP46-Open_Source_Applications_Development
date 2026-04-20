@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="card">
+  <h1>Edit Product</h1>
+  <p class="sub muted">Update product details.</p>
+
+  <form method="post" enctype="multipart/form-data" class="product-form" style="display:grid;grid-template-columns:1fr 300px;gap:1rem;">
+    {% csrf_token %}
+
+    <div style="grid-column:1/-1">
+      <label for="id_name">Name</label>
+      <input id="id_name" name="name" type="text" value="{{ product.name }}" required style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);">
+    </div>
+
+    <div>
+      <label for="id_price">Price</label>
+      <input id="id_price" name="price" type="number" step="0.01" min="0" value="{{ product.price }}" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);">
+    </div>
+
+    <div>
+      <label for="id_stock">Stock / Brand</label>
+      <input id="id_stock" name="stock" type="text" value="{{ product.stock }}" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);">
+    </div>
+
+    <div style="grid-column:1/-1">
+      <label for="id_category">Category</label>
+      <select id="id_category" name="category" class="select-field" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);">
+        <option value="">-- Select category --</option>
+        {% for c in categories %}
+          <option value="{{ c.id }}" {% if product.category_id == c.id %}selected{% endif %}>{{ c.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div style="grid-column:1/-1">
+      <label for="id_description">Description</label>
+      <textarea id="id_description" name="description" rows="5" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);">{{ product.description }}</textarea>
+    </div>
+
+    <div style="grid-column:1/-1">
+      <label>Current image</label>
+      {% if product.image %}
+        <div style="margin:.5rem 0;">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:160px;height:auto;border-radius:8px;border:1px solid #eee;">
+        </div>
+      {% else %}
+        <div class="muted">No image uploaded</div>
+      {% endif %}
+      <label class="file-btn" for="id_image" style="display:inline-block;margin-top:.5rem;padding:.45rem .75rem;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer;">Choose new photo</label>
+      <span id="file-name" class="file-name" style="margin-left:.6rem;color:var(--muted)">No file chosen</span>
+      <input id="id_image" name="image" type="file" accept="image/*" class="visually-hidden">
+    </div>
+
+    <div style="grid-column:1/-1;display:flex;gap:.5rem;align-items:center;margin-top:.25rem">
+      <button class="btn btn-primary" type="submit" style="background:var(--accent);color:#fff;padding:.5rem .9rem;border-radius:8px;border:0;font-weight:700">Save</button>
+      <a class="btn" href="{% url 'products.index' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  (function(){
+    const input = document.getElementById('id_image');
+    const nameEl = document.getElementById('file-name');
+    if(input){
+      input.addEventListener('change', e => {
+        const f = e.target.files && e.target.files[0];
+        nameEl.textContent = f ? f.name : 'No file chosen';
+      });
+    }
+  })();
+</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <div style="padding: 2rem; text-align: center;">
+        <h1>Welcome to the Marketplace</h1>
+        <p>Discover a curated selection of products for your shop.</p>
+        <a href="/products/index" class="cta">Browse Products</a>
+        <a href="/products/create" class="cta">Add Product</a>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid rgba(0,0,0,.06)">
+
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <form id="edit-form" onsubmit="return handleEdit(event)" style="display:flex;gap:8px;align-items:center;">
+                <label for="edit-id" style="font-weight:600">Edit ID</label>
+                <input id="edit-id" name="id" type="number" min="1" placeholder="Product id" required style="padding:.5rem;border-radius:8px;border:1px solid #e6e9ef;">
+                <button type="submit" class="cta">Edit</button>
+            </form>
+
+            <form id="delete-form" onsubmit="return handleDelete(event)" style="display:flex;gap:8px;align-items:center;">
+                <label for="delete-id" style="font-weight:600">Delete ID</label>
+                <input id="delete-id" name="id" type="number" min="1" placeholder="Product id" required style="padding:.5rem;border-radius:8px;border:1px solid #e6e9ef;">
+                <button type="submit" class="cta" style="background:#ef4444;border-color:#ef4444">Delete</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleEdit(e){
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value.trim();
+            if(!id) return false;
+            location.href = `/products/edit/${encodeURIComponent(id)}`;
+            return false;
+        }
+        function handleDelete(e){
+            e.preventDefault();
+            const id = document.getElementById('delete-id').value.trim();
+            if(!id) return false;
+            if(!confirm('Are you sure you want to delete product #' + id + '?')) return false;
+            location.href = `/products/delete/${encodeURIComponent(id)}`;
+            return false;
+        }
+    </script>
+{% endblock %}

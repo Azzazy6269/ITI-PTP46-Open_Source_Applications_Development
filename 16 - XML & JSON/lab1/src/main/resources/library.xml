@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+<library>
+    <location>Cairo, Egypt</location>
+    <description>Public library for students and researchers.</description>
+    <librarian>Ahmed Hassan</librarian>
+
+    <books>
+        <book>
+            <title>Introduction to Programming</title>
+            <ISBN>978-1234567890</ISBN>
+            <author>John Smith</author>
+
+            <parts>
+                <part>
+                    <title>Programming Basics</title>
+
+                    <chapters>
+                        <chapter>
+                            <title>Getting Started</title>
+                            <summary>This chapter introduces the fundamentals of programming.</summary>
+
+                            <sections>
+                                <section>
+                                    <content>
+                                        <paragrah>
+                                            Programming is the process of writing instructions 
+                                            that tell a computer how to perform tasks.
+                                        </paragrah>
+                                    </content>
+                                </section>
+                            </sections>
+
+                        </chapter>
+                    </chapters>
+                </part>
+            </parts>
+        </book>
+    </books>
+</library>

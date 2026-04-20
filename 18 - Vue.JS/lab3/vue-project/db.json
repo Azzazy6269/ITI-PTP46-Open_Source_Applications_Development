@@ -1,0 +1,103 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Cozy Sneakers",
+      "description": "High-quality sneakers that go with everything you wear.",
+      "image": "https://m.media-amazon.com/images/I/71UQ0gUvCFL._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "NEW",
+      "price": 120,
+      "discount": 20,
+      "stock": 9,
+      "tags": [
+        "Fashion",
+        "Casual",
+        "Sport"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Classic Shoes",
+      "description": "Built for speed and comfort on any terrain.",
+      "image": "https://m.media-amazon.com/images/I/613EpMRrrPL._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "",
+      "price": 90,
+      "discount": 10,
+      "stock": 11,
+      "tags": [
+        "Sport",
+        "Running"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Casual Sneakers",
+      "description": "Rugged boots for everyday adventures.",
+      "image": "https://m.media-amazon.com/images/I/71iM1HfOsyL._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "SALE",
+      "price": 150,
+      "discount": 0,
+      "stock": 20,
+      "tags": [
+        "Casual",
+        "Winter"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Women Shoes",
+      "description": "Light and breezy for sunny days.",
+      "image": "https://m.media-amazon.com/images/I/71nuHKqmeYL._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "",
+      "price": 30,
+      "discount": 50,
+      "stock": 11,
+      "tags": [
+        "Summer",
+        "Casual"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Airforce",
+      "description": "Light and breezy for sunny days.",
+      "image": "https://m.media-amazon.com/images/I/61MubdIPbkL._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "",
+      "price": 40,
+      "discount": 50,
+      "stock": 5,
+      "tags": [
+        "Summer",
+        "Casual"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Sports Shoes",
+      "description": "Light and breezy for sunny days.",
+      "image": "https://m.media-amazon.com/images/I/71Aw4gC1zOL._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "",
+      "price": 30,
+      "discount": 12,
+      "stock": 1,
+      "tags": [
+        "Summer",
+        "Casual"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Women Classic Shoes",
+      "description": "Light and breezy for sunny days.",
+      "image": "https://m.media-amazon.com/images/I/61vJH8NJE5L._AC_UL480_FMwebp_QL65_.jpg",
+      "badge": "",
+      "price": 70,
+      "discount": 0,
+      "stock": 6,
+      "tags": [
+        "Classic"
+      ]
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
