@@ -1,0 +1,36 @@
+CMD: is used to write some instructions in docker file that can be overrided
+ENTRYPOINT: can't be overrided
+
+COPY:is used to copy files to the image
+ADD: is used to copy files to the image , extract composed files and it can download files directly from the internet to your image
+
+
+Problem1:
+docker run hello-world
+docker ps -a
+docker start 7d088df335b5
+docker rm -f 7d088df335b5
+docker rmi hello-world
+
+Problem2:
+docker run -it ubuntu bash
+echo "docker"
+touch hello-docker
+exit
+docker rm -f a1f2b9f3d5a7
+
+Problem3:
+docker run -d --name app-database -e MYSQL_ROOT_PASSWORD=pass123456 mysql:latest
+
+Problem4:
+docker run -d --name my-nginx -p 8080:80 nginx
+echo "<h1>Hello from My Custom Nginx!</h1>" > index.html
+docker cp index.html my-nginx:/usr/share/nginx/html/index.html
+docker commit my-nginx image-nginx-custom
+
+Problem5:
+mkdir my-python-app
+touch app.py
+touch DockerFile
+docker build -t my-python-app .
+docker run my-python-app
