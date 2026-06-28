@@ -3,8 +3,19 @@ const db = require('../../db/database');
 
 const router = express.Router();
 
-// GET /authors
-// Return all authors.
+/**
+ * @swagger
+ * /authors:
+ *   get:
+ *     summary: Get all authors
+ *     tags:
+ *       - Authors
+ *     responses:
+ *       200:
+ *         description: Author found
+ *       501:
+ *         description: failed to fetch data
+ */
 router.get('/', (req, res) => {
   try{
     const authors = db.prepare('select * from authors').all();
@@ -15,8 +26,25 @@ router.get('/', (req, res) => {
 
 });
 
-// GET /authors/:id
-// Return a single author. 404 if not found.
+/**
+ * @swagger
+ * /authors/{id}:
+ *   get:
+ *     summary: Get author by id
+ *     tags:
+ *       - Authors
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Author found
+ *       404:
+ *         description: Author not found
+ */
 router.get('/:id', (req, res) => {
   try{
     const author = db.prepare('select * from authors where id=?').get(req.params.id);
@@ -31,9 +59,30 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// POST /authors
-// Create a new author. Body: { name, bio? }
-// Respond 201 with the created author.
+/**
+ * @swagger
+ * /authors:
+ *   post:
+ *     summary: Create a new author
+ *     tags:
+ *       - Authors
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *             properties:
+ *               name:
+ *                 type: string
+ *               bio:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Author created
+ */
 router.post('/', (req, res) => {
   try{
     const authors = db.prepare('insert into authors(name,bio) values(?,?)').run(req.body.name,req.body.bio);
@@ -43,9 +92,36 @@ router.post('/', (req, res) => {
   }
 });
 
-// PATCH /authors/:id
-// Update name and/or bio. Body: { name?, bio? }
-// Respond 200 with the updated author. 404 if not found.
+/**
+ * @swagger
+ * /authors/{id}:
+ *   patch:
+ *     summary: Update an author
+ *     tags:
+ *       - Authors
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               bio:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Updated author
+ *       404:
+ *         description: Author not found
+ */
 router.patch('/:id', (req, res) => {
   try{
     const {name,bio} =req.body;
@@ -64,8 +140,25 @@ router.patch('/:id', (req, res) => {
   }
 });
 
-// DELETE /authors/:id
-// Delete an author and their books (cascade). 204 on success. 404 if not found.
+/**
+ * @swagger
+ * /authors/{id}:
+ *   delete:
+ *     summary: Delete an author
+ *     tags:
+ *       - Authors
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       204:
+ *         description: Deleted successfully
+ *       404:
+ *         description: Author not found
+ */
 router.delete('/:id', (req, res) => {
   try{
     const author = db.prepare('DELETE FROM authors where id=?').run(req.params.id);
@@ -80,8 +173,25 @@ router.delete('/:id', (req, res) => {
   }
 });
 
-// GET /authors/:id/books
-// Return all books by this author. 404 if author not found.
+/**
+ * @swagger
+ * /authors/{id}/books:
+ *   get:
+ *     summary: Get all books by an author
+ *     tags:
+ *       - Authors
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: List of books
+ *       404:
+ *         description: Author not found
+ */
 router.get('/:id/books', (req, res) => {
   try{
     const author = db.prepare('SELECT * FROM authors WHERE id=?').get(req.params.id);

@@ -3,9 +3,22 @@ const db = require('../../db/database');
 
 const router = express.Router();
 
-// GET /loans
-// Return all loans. Optional query param: ?returned=true|false
-// (filter by whether returned_at is set)
+/**
+ * @swagger
+ * /books:
+ *  get:
+ *    summary: get all loans
+ *    tags: Loans
+ *    parameters:
+ *      in: queryparams
+ *      name: returned
+ *      required: false
+ *      response: 
+ *        200:
+ *         description: loans found
+ *        500:
+ *         description: an error occured
+ */
 router.get('/', (req, res) => {
   try {
     let loans;
@@ -37,8 +50,27 @@ router.get('/', (req, res) => {
   }
 });
 
-// GET /loans/:id
-// Return a single loan including book info. 404 if not found.
+/**
+ * @swagger
+ * /loans/{id}:
+ *   get:
+ *     summary: Get loan by id
+ *     tags:
+ *       - Loans
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: loan found
+ *       404:
+ *         description: Loan not found
+ *       500:
+ *         description: an error occured
+ */
 router.get('/:id', (req, res) => {
   try {
     const loan = db.prepare(`
@@ -71,11 +103,36 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// POST /loans
-// Check out a book. Body: { book_id, borrower_name }
-// 404 if book not found.
-// 409 if the book is already on active loan (returned_at IS NULL).
-// Respond 201 with the created loan.
+/**
+ * @swagger
+ * /loans:
+ *   post:
+ *     summary: Create a new loan
+ *     tags:
+ *       - Loans
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *             properties:
+ *               borrower_name:
+ *                 type: string
+ *               book_id:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Author created
+ *       404: 
+ *         description: Book not found
+ *       409: 
+ *         description: Book is already on active loan
+ *       501:
+ *         description: an error occured
+ */
 router.post('/', (req, res) => {
   try {
     const { book_id, borrower_name } = req.body;
@@ -96,10 +153,31 @@ router.post('/', (req, res) => {
   }
 });
 
-// PATCH /loans/:id/return
-// Mark a loan as returned (set returned_at = today).
-// 404 if loan not found. 409 if already returned.
-// Respond 200 with the updated loan.
+/**
+ * @swagger
+ * /loans/{id}/return:
+ *   patch:
+ *     summary: Mark a loan as returned
+ *     description: Sets the returned_at field to today's date.
+ *     tags:
+ *       - Loans
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Loan ID
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Loan returned successfully
+ *       404:
+ *         description: Loan not found
+ *       409:
+ *         description: Loan already returned
+ *       500:
+ *         description: Internal server error
+ */
 router.patch('/:id/return', (req, res) => {
   try {
     const { id } = req.params;

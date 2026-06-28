@@ -3,8 +3,22 @@ const db = require('../../db/database');
 
 const router = express.Router();
 
-// GET /books
-// Return all books. Optional query param: ?author_id=<id>
+/**
+ * @swagger
+ * /books:
+ *  get:
+ *    summary: get all books or get all books belong to a specific author
+ *    tags: Books, Authors
+ *    parameters:
+ *      in: queryparams
+ *      name: author_id
+ *      required: false
+ *      response: 
+ *        200:
+ *         description: Books found
+ *        404:
+ *         description: Author not found
+ */
 router.get('/', (req, res) => {
   try{
     let books;
@@ -15,13 +29,30 @@ router.get('/', (req, res) => {
     }
     res.status(200).json({ books });
   }catch(error){
-    res.status(501).json({ error });
+    res.status(404).json({ error });
   }
   
 });
 
-// GET /books/:id
-// Return a single book including its author info. 404 if not found.
+/**
+ * @swagger
+ * /books/{id}:
+ *   get:
+ *     summary: Get book by id
+ *     tags:
+ *       - Books
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Book found
+ *       501:
+ *         description: Book not found
+ */
 router.get('/:id', (req, res) => {
   try{
     const book = db.prepare('SELECT * FROM books WHERE id=?').get(req.params.id);
@@ -32,9 +63,34 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// POST /books
-// Create a new book. Body: { title, year?, author_id }
-// Respond 201 with the created book. 404 if author_id does not exist.
+/**
+ * @swagger
+ * /books:
+ *   post:
+ *     summary: Create a new book
+ *     tags:
+ *       - Books
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *             properties:
+ *               title:
+ *                 type: string
+ *               year:
+ *                 type: integer
+ *               author_id:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Author created
+ *       501:
+ *         description: an error occured
+ */
 router.post('/', (req, res) => {
   try{
     const book = db.prepare('INSERT INTO books(title,year,author_id) VALUES(?,?,?)').run(req.body.title,req.body.year,req.body.author_id);
@@ -44,9 +100,38 @@ router.post('/', (req, res) => {
   }
 });
 
-// PATCH /books/:id
-// Update title, year, or author_id. Body: { title?, year?, author_id? }
-// Respond 200 with the updated book. 404 if not found.
+/**
+ * @swagger
+ * /books/{id}:
+ *   patch:
+ *     summary: Update an book
+ *     tags:
+ *       - Books
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               bio:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Updated book
+ *       404:
+ *         description: Book or Author not found
+ *       500:
+ *         description: an error occured
+ */
 router.patch('/:id', (req, res) => {
   try {
     const { title, year, author_id } = req.body;
@@ -74,8 +159,25 @@ router.patch('/:id', (req, res) => {
   }
 });
 
-// DELETE /books/:id
-// Delete a book. 204 on success. 404 if not found.
+/**
+ * @swagger
+ * /books/{id}:
+ *   delete:
+ *     summary: Delete a book
+ *     tags:
+ *       - Books
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       204:
+ *         description: Deleted successfully
+ *       404:
+ *         description: Book not found
+ */
 router.delete('/:id', (req, res) => {
   try{
     const book = db.prepare('DELETE FROM books where id=?').run(req.params.id);
